@@ -440,6 +440,51 @@
   .ap-svt{font-weight:700;font-size:13.5px}.ap-svm{font-size:12px;color:var(--ink-2);margin-top:1px}
   .ap-svby{font-size:12px;color:var(--muted);margin-top:6px}
   .ap-gm{font-size:10px;font-weight:800;color:var(--gold-ink,#b9791a);background:var(--gold-soft,#fdf3e0);padding:2px 7px;border-radius:5px !important}
+  /* ---- About redesign (B5 v9) ---- */
+  .abt-kick{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2);margin-bottom:8px}
+  .abt-mission{max-width:760px;margin:34px auto 8px;text-align:center;padding:34px 40px;background:var(--accent-soft);border-radius:20px !important}
+  .abt-mission p{font-size:20px;line-height:1.55;color:var(--ink);margin:12px 0 0;font-weight:500}
+  .abt-mission em{color:var(--accent-2);font-style:normal;font-weight:700}
+  .abt-sec{padding:34px 0}
+  .abt-sec h2{font-size:27px;letter-spacing:-.02em;margin:0 0 6px}
+  .abt-founder{display:grid;grid-template-columns:230px 1fr;gap:34px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:20px !important;padding:30px 34px;box-shadow:0 20px 46px -32px rgba(18,19,31,.4)}
+  .abt-founder .side{text-align:center}
+  .abt-fav{width:120px;height:120px;border-radius:999px !important;margin:0 auto;background:linear-gradient(135deg,#00b488,#009b74);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:42px}
+  .abt-founder .nm{font-weight:800;font-size:18px;margin-top:14px}
+  .abt-founder .rl{font-size:13px;color:var(--muted)}
+  .abt-founder .yrs{margin-top:12px;display:inline-block;font-size:12px;font-weight:800;color:var(--gold-ink,#b9791a);background:var(--gold-soft,#fdf3e0);padding:5px 12px;border-radius:999px !important}
+  .abt-founder p{margin:0 0 12px;font-size:15px;color:var(--ink-2);line-height:1.7}
+  .abt-founder p:last-child{margin-bottom:0}
+  .abt-founder em{font-style:italic;color:var(--ink)}
+  @media(max-width:720px){.abt-founder{grid-template-columns:1fr;gap:20px;text-align:center}.abt-founder p{text-align:left}}
+  .abt-prob-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:8px}
+  @media(max-width:640px){.abt-prob-grid{grid-template-columns:1fr}}
+  .abt-pc{border:1px solid var(--line);border-radius:16px !important;padding:20px 22px;background:#fff}
+  .abt-pc .ic{width:42px;height:42px;border-radius:11px !important;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:21px;margin-bottom:12px}
+  .abt-pc h3{margin:0 0 5px;font-size:16px}
+  .abt-pc p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.55}
+  .abt-punch{text-align:center;font-size:20px;font-weight:700;margin-top:26px}
+  .abt-punch b{color:var(--accent-2)}
+  .abt-why{background:linear-gradient(120deg,#0a5140,#00785a);color:#eafaf4;border-radius:20px !important;padding:40px 44px;margin:10px 0;text-align:center}
+  .abt-why .abt-kick{color:#8fe0c6}
+  .abt-why h2{color:#fff;font-size:25px;margin:0 0 12px;letter-spacing:-.02em}
+  .abt-why p{font-size:16.5px;max-width:720px;margin:0 auto;color:#d7f2e8;line-height:1.6}
+  .abt-why em{color:#fff;font-weight:700;font-style:normal}
+  @media(max-width:640px){.abt-why{padding:30px 24px}.abt-why h2{font-size:21px}}
+  .abt-grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:640px){.abt-grid4{grid-template-columns:1fr}}
+  .abt-fc{border:1px solid var(--line);border-radius:16px !important;padding:22px 24px}
+  .abt-fc .ic{font-size:24px}
+  .abt-fc h3{margin:10px 0 5px;font-size:16.5px}
+  .abt-fc p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.55}
+  .abt-who-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media(max-width:820px){.abt-who-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:480px){.abt-who-grid{grid-template-columns:1fr}}
+  .abt-who{border:1px solid var(--line);border-radius:16px !important;padding:20px;text-align:center;background:var(--panel,#f6f8f7)}
+  .abt-who .ic{font-size:30px}
+  .abt-who h3{margin:10px 0 4px;font-size:15px}
+  .abt-who p{margin:0;font-size:12.5px;color:var(--ink-2);line-height:1.5}
+  .abt-who-note{text-align:center;font-size:15px;color:var(--ink-2);margin-top:22px}
   /* ---- portfolio-detail owner card ---- */
   .owner-card{background:#fff;border:1.5px solid var(--line);border-radius:16px !important;padding:20px 16px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px}
   .owner-card .avatar{border-radius:999px !important;margin-bottom:8px}
@@ -1384,6 +1429,15 @@ function viewExpertSent(){
 }
 const COUNTRIES=['United States','South Korea','Canada','United Kingdom','Australia','China','Japan','Taiwan','Hong Kong','Singapore','India','Indonesia','Malaysia','Philippines','Thailand','Vietnam','Germany','France','Italy','Spain','Netherlands','Sweden','Norway','Denmark','Finland','Switzerland','Austria','Belgium','Ireland','Poland','Portugal','Greece','Turkey','Russia','Ukraine','Brazil','Mexico','Argentina','Chile','Colombia','Peru','United Arab Emirates','Saudi Arabia','Israel','Qatar','Egypt','South Africa','Nigeria','Kenya','New Zealand','Other'];
 function countrySelect(sel){return `<select class="select" name="country" required><option value="" disabled ${sel?'':'selected'}>Select country</option>${COUNTRIES.map(c=>`<option ${c===sel?'selected':''}>${c}</option>`).join('')}</select>`;}
+function countryField(sel){return `<select class="select" name="country"><option value="">Country</option>${COUNTRIES.map(c=>`<option ${c===(sel||'')?'selected':''}>${esc(c)}</option>`).join('')}</select>`;}
+function regionLabel(country){return country==='United States'?'State':(country==='Canada'?'Province':((country==='United Kingdom'||country==='South Korea')?'Region':'State / Province'));}
+function locationFields(u){return `<div class="field"><label>Location</label>
+      <div class="grid grid-2" style="gap:0 12px">
+        <div class="field" style="margin:0">${countryField(u.country)}</div>
+        <div class="field" style="margin:0"><input class="input" name="state" value="${esc(u.state||'')}" placeholder="${esc(regionLabel(u.country))}"></div>
+      </div>
+      <input class="input" name="city" value="${esc(u.city||'')}" placeholder="City" style="margin-top:12px">
+    </div>`;}
 function viewSignup(){
   const r=(signupDraft.role==='accepted')?'accepted':'aspiring';const acc=r==='accepted';
   const H=acc?'Share your accepted portfolio':'Welcome to Lukumo';
@@ -1532,6 +1586,7 @@ function profileFields(u){
         <div class="field" style="grid-column:1/-1"><label>Major you’re applying for</label><select class="select" name="tmajor">${opts(MAJORS,(u.targetMajors&&u.targetMajors[0]))}</select></div>
         <div class="field" style="grid-column:1/-1"><label>Expected graduation year <span class="hint">— sets your Explore / Build / Apply mode automatically</span></label><input class="input" name="agradYear" value="${esc(u.gradYear||'')}" placeholder="e.g. ${new Date().getFullYear()+1}"></div>
       </div>`}
+    ${locationFields(u)}
     <div class="grid grid-2" style="gap:0 16px">
       <div class="field"><label>Website</label><input class="input" name="website" value="${esc(u.links?.website||'')}" placeholder="yoursite.com"></div>
       <div class="field"><label>Instagram</label><input class="input" name="instagram" value="${esc(u.links?.instagram||'')}" placeholder="username"></div>
@@ -1557,7 +1612,10 @@ function viewEditProfile(){
         <div class="ep-row"><label>First Name</label><input class="input" name="given" value="${esc(given)}"></div>
         <div class="ep-row"><label>Last Name</label><input class="input" name="surname" value="${esc(surname)}"></div>
         <div class="ep-row"><label>Email</label><input class="input" name="email" type="email" value="${esc(u.email||'')}"></div>
-        <div class="ep-row"><label>Location</label><input class="input" name="location" value="${esc(u.location||'')}" placeholder="City, State"></div>
+        <div class="ep-row top"><label>Location</label><div>
+          <div class="grid grid-2" style="gap:0 12px">${countryField(u.country)}<input class="input" name="state" value="${esc(u.state||'')}" placeholder="${esc(regionLabel(u.country))}"></div>
+          <input class="input" name="city" value="${esc(u.city||'')}" placeholder="City" style="margin-top:10px">
+        </div></div>
         ${acc?`
         <div class="ep-row"><label>Attending/Attended School</label><select class="select" name="school">${opts(SCHOOLS,u.school)}</select></div>
         <div class="ep-row"><label>Major</label><select class="select" name="major">${opts(MAJORS,u.major)}</select></div>
@@ -2440,46 +2498,69 @@ function viewExpert(){
 
 function viewAbout(){
   const vals=[
-    ['🔍','See what actually got in','Verified, real accepted portfolios — organized by school and major, not anonymous posts.'],
+    ['👀','See what actually got in','Verified, real accepted portfolios — organized by school and major, not anonymous posts.'],
     ['🤝','Learn from the people who made it','Talk to the students and grads who have already walked through the door of your dream program.'],
-    ['💬','Context, not guesswork','Their own reflections, how each piece meets a school\'s requirements, and answers to your real questions.'],
+    ['🧭','Context, not guesswork','Their own reflections, how each piece meets a school\'s requirements, and answers to your real questions.'],
     ['💚','Guidance you can afford','Private coaching can cost $300 a session. Lukumo gives you real examples and community for a fraction of that.'],
   ];
   return `<div class="wrap">
     ${geoHero('Art is in your heart. Let\'s get it through the door.','Lukumo connects future art & design students with the real portfolios — and the real people — that got accepted.')}
 
-    <section style="margin-top:30px;max-width:820px">
-      <h2 style="font-size:22px;font-weight:800;letter-spacing:-.02em">Our mission</h2>
-      <p style="color:var(--ink-2);margin-top:14px;line-height:1.7">Every student deserves to see what “good enough” actually looks like — and to talk to someone who has been there — without the luck, the cost, or the guesswork. Lukumo brings the real portfolios that got into art &amp; design school into one place, organized by school and major, and connects you with the people who made them.</p>
-    </section>
+    <div class="abt-mission">
+      <div class="abt-kick">Our mission</div>
+      <p>Every student deserves to see what <em>actually gets in</em> — and to talk to someone who has been there — without the luck, the cost, or the guesswork. Lukumo brings the real portfolios that got into art &amp; design school into one place, organized by school and major, and connects you with the people who made them.</p>
+    </div>
 
-    <section style="margin-top:30px;max-width:820px">
-      <h2 style="font-size:22px;font-weight:800;letter-spacing:-.02em">Why Lukumo exists</h2>
-      <p style="color:var(--ink-2);margin-top:14px;line-height:1.7">For 10 years I worked as an art-admissions consultant, sitting beside hundreds of students as they tried to figure out how to get into art &amp; design school. I actually designed and built the very first version of this platform a decade ago — but other work pulled me away, and I set it aside before it was ever finished.</p>
-      <p style="color:var(--ink-2);margin-top:12px;line-height:1.7">Then I came back, and the ground had shifted. AI can generate a polished image in seconds, and suddenly students, parents, and even schools are all asking the same question: <em>what does a real portfolio mean now?</em> I watched a new generation navigate that confusion with almost no guidance — and I knew it was finally time to build what I had imagined all those years ago. That is Lukumo.</p>
-      <p style="color:var(--ink);font-weight:700;margin-top:16px">— Abigail, Founder of Lukumo</p>
-    </section>
-
-    <section style="margin-top:34px">
-      <h2 class="page-title" style="font-size:22px">The problem we are solving</h2>
-      <p class="page-sub" style="max-width:820px;color:#4d525e;line-height:1.7">Every school wants something different — one asks for 12 pieces, another 20; one wants observational drawing, another a home test. Advanced art classes are disappearing from high schools, and private coaching costs more than most families can afford. And online, it is hard to know what is even real. Most students are left to guess. You should not have to.</p>
-    </section>
-
-    <section style="margin-top:30px">
-      <h2 class="page-title" style="font-size:22px">Why now — the age of AI</h2>
-      <p class="page-sub" style="max-width:820px;color:#4d525e;line-height:1.7">AI has changed what it means to make art and to build a portfolio. As anyone can generate a polished image, schools are looking harder for what AI cannot fake — process, observation, a personal voice, real thinking. That makes seeing how real students actually got in, and talking to them directly, more valuable than ever.</p>
-    </section>
-
-    <section style="margin-top:30px">
-      <h2 class="page-title" style="font-size:22px">How Lukumo helps</h2>
-      <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:16px;gap:18px">
-        ${vals.map(v=>`<div class="value-card"><h3>${v[1]}</h3><p>${v[2]}</p></div>`).join('')}
+    <section class="abt-sec">
+      <div class="abt-kick">Why Lukumo exists</div>
+      <div class="abt-founder">
+        <div class="side">
+          <div class="abt-fav">A</div>
+          <div class="nm">Abigail</div>
+          <div class="rl">Founder of Lukumo</div>
+          <div class="yrs">10 yrs · art-admissions</div>
+        </div>
+        <div class="body">
+          <p>For 10 years I worked as an art-admissions consultant, sitting beside hundreds of students as they tried to figure out how to get into art &amp; design school. I actually designed and built the very first version of this platform a decade ago — but other work pulled me away, and I set it aside before it was ever finished.</p>
+          <p>Then I came back, and the ground had shifted. AI can generate a polished image in seconds, and suddenly students, parents, and even schools are all asking the same question: <em>what does a real portfolio mean now?</em> I watched a new generation navigate that confusion with almost no guidance — and I knew it was finally time to build what I had imagined all those years ago. That is Lukumo.</p>
+        </div>
       </div>
     </section>
 
-    <section style="margin-top:30px;max-width:820px">
-      <h2 style="font-size:22px;font-weight:800">Built for everyone in the journey</h2>
-      <p style="color:var(--ink-2);margin-top:12px;line-height:1.7"><b>Students</b> preparing a portfolio, <b>parents</b> who want to help — and to know art can lead somewhere, <b>educators and mentors</b> giving back what they once received, and <b>working pros</b> who can show where a major really leads. Lukumo brings them together, so no one has to figure it out alone.</p>
+    <section class="abt-sec">
+      <div class="abt-kick">The problem we are solving</div>
+      <h2>Most students are left to guess.</h2>
+      <div class="abt-prob-grid">
+        <div class="abt-pc"><div class="ic">📐</div><h3>Every school wants something different</h3><p>One asks for 12 pieces, another 20; one wants observational drawing, another a home test.</p></div>
+        <div class="abt-pc"><div class="ic">🏫</div><h3>Art classes are disappearing</h3><p>Advanced art classes are vanishing from high schools, leaving students without a foundation.</p></div>
+        <div class="abt-pc"><div class="ic">💸</div><h3>Coaching is out of reach</h3><p>Private coaching costs more than most families can afford.</p></div>
+        <div class="abt-pc"><div class="ic">🌫️</div><h3>Hard to know what's real</h3><p>Online, it is hard to know what is even real — or what actually got someone in.</p></div>
+      </div>
+      <div class="abt-punch">You should <b>not</b> have to guess.</div>
+    </section>
+
+    <div class="abt-why">
+      <div class="abt-kick">Why now — the age of AI</div>
+      <h2>What AI cannot fake is now the point.</h2>
+      <p>AI has changed what it means to make art and to build a portfolio. As anyone can generate a polished image, schools are looking harder for what AI cannot fake — <em>process, observation, a personal voice, real thinking.</em> That makes seeing how real students actually got in, and talking to them directly, more valuable than ever.</p>
+    </div>
+
+    <section class="abt-sec">
+      <div class="abt-kick">How Lukumo helps</div>
+      <div class="abt-grid4">
+        ${vals.map(v=>`<div class="abt-fc"><div class="ic">${v[0]}</div><h3>${v[1]}</h3><p>${v[2]}</p></div>`).join('')}
+      </div>
+    </section>
+
+    <section class="abt-sec">
+      <div class="abt-kick">Built for everyone in the journey</div>
+      <div class="abt-who-grid">
+        <div class="abt-who"><div class="ic">🎨</div><h3>Students</h3><p>Preparing a portfolio for their dream program.</p></div>
+        <div class="abt-who"><div class="ic">👪</div><h3>Parents</h3><p>Who want to help — and to know art can lead somewhere.</p></div>
+        <div class="abt-who"><div class="ic">🎓</div><h3>Educators &amp; Mentors</h3><p>Giving back what they once received.</p></div>
+        <div class="abt-who"><div class="ic">💼</div><h3>Working Pros</h3><p>Who can show where a major really leads.</p></div>
+      </div>
+      <div class="abt-who-note">Lukumo brings them together, so no one has to figure it out alone.</div>
     </section>
 
     <section class="card" style="margin-top:36px;text-align:center;padding:44px 32px;background:var(--accent-soft);border:none">
@@ -2869,7 +2950,11 @@ function wire(){
     const g=d.get('given');u.name=(g!==null)?((g||'')+' '+(d.get('surname')||'')).trim():(d.get('name')||u.name);
     if(d.get('title')!==null)u.title=d.get('title');
     if(d.get('email'))u.email=d.get('email');
-    if(d.get('location')!==null)u.location=d.get('location');
+    if(d.get('country')!==null)u.country=d.get('country');
+    if(d.get('state')!==null)u.state=d.get('state');
+    if(d.get('city')!==null)u.city=d.get('city');
+    if(d.get('country')!==null||d.get('city')!==null||d.get('state')!==null)u.location=[u.city,u.state,u.country].filter(Boolean).join(', ');
+    else if(d.get('location')!==null)u.location=d.get('location');
     if(d.get('bio')!==null)u.bio=d.get('bio');
     const links=u.links||{};['website','instagram','linkedin','facebook'].forEach(k=>{if(d.get(k)!==null)links[k]=d.get(k);});u.links=links;
     if(u.role==='accepted'){const schs=d.getAll('school').filter(Boolean);if(schs.length){u.schools=schs;u.school=schs[0];}if(d.get('major')!==null)u.major=d.get('major');if(d.get('level')!==null)u.level=d.get('level');if(d.get('gradYear')!==null)u.gradYear=d.get('gradYear');}
