@@ -1570,7 +1570,7 @@ function browseBody(){
         <div class="filter-combo" data-home-combo><input class="filter-comboinput" data-home-school-input type="text" placeholder="Select School" value="${esc(landingFilter.school||'')}" autocomplete="off" role="combobox" aria-autocomplete="list"/><div class="filter-menu hidden" data-home-menu></div></div>
         <select class="select" name="major"><option value="" disabled ${landingFilter.major?'':'selected'}>Select Major</option>${majorsFor(landingFilter.type,landingFilter.school).map(m=>`<option ${landingFilter.major===m?'selected':''}>${esc(m)}</option>`).join('')}</select>
       </form>
-      <div class="row" style="gap:8px;flex-wrap:wrap;margin-bottom:12px"><span style="font-weight:700;color:var(--muted);font-size:13px;margin-right:2px">Popular:</span>${top.map(s=>`<button class="pill-filter ${landingFilter.school===s?'active':''}" data-pop="${esc(s)}">${esc(shortName(s))}</button>`).join('')}</div>
+      <div class="row" style="gap:8px;flex-wrap:wrap;margin-bottom:12px;justify-content:center;align-items:center"><span style="font-weight:700;color:var(--muted);font-size:13px;margin-right:2px">Popular:</span>${top.map(s=>`<button class="pill-filter ${landingFilter.school===s?'active':''}" data-pop="${esc(s)}">${esc(shortName(s))}</button>`).join('')}</div>
       <div class="sort-row">
         <button data-sort="viewed" class="${landingFilter.sort==='viewed'?'on':''}">Most Viewed</button>
         <button data-sort="recent" class="${landingFilter.sort==='recent'?'on':''}">Most Recent</button>
