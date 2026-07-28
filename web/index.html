@@ -883,12 +883,13 @@
   .site-footer .flinks a{color:var(--muted);font-size:13px;font-weight:500;cursor:pointer}
   .site-footer .flinks a:hover{color:var(--accent)}
   .site-footer .fcopy{color:var(--muted);font-size:13px}
-  .land-nav{display:flex;gap:2px;margin-left:2px}
-  .land-nav a{padding:8px 13px;border-radius:999px;border:1.5px solid transparent;font-size:15.5px;font-weight:600;color:var(--ink-2);cursor:pointer}
-  .land-nav a:hover{color:var(--ink)}
+  .land-nav{display:flex;align-items:center;gap:2px;margin-left:2px}
+  .land-nav a{padding:6px 12px;border-radius:999px;border:1.5px solid transparent;font-size:14.5px;font-weight:600;color:var(--ink-2);cursor:pointer;transition:color .15s ease,transform .15s ease,background .15s ease}
+  .land-nav a:hover{color:var(--accent-2);transform:translateY(-1.5px)}
   .land-nav a.on{color:var(--accent);border-color:var(--accent);background:transparent}
-  .land-nav a.navcta{background:var(--blue);color:#fff;border-color:var(--blue);font-weight:800}
-  .land-nav a.navcta:hover{color:#fff;filter:brightness(.95)}
+  .land-nav a.on:hover{transform:translateY(-1.5px)}
+  .land-nav a.navcta{margin-left:11px;background:var(--blue);color:#fff;border-color:var(--blue);font-weight:800}
+  .land-nav a.navcta:hover{color:#fff;transform:translateY(-1.5px);filter:brightness(.94)}
   .bk-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
   .bk-pill{padding:9px 14px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-size:13.5px;font-weight:600;color:var(--ink-2);cursor:pointer;transition:.14s}
   .bk-pill:hover{border-color:#cfd3e6}
@@ -1347,7 +1348,7 @@ function updateSEO(){
   md.setAttribute('content',desc||'');
 }
 
-const GUEST_OK=['resources','guides','review','experts','pros','portfolio','project','results','about','pricing','expert','expertSent','becomeMentor','mentor','bookMentor'];
+const GUEST_OK=['resources','blog','guides','review','experts','pros','portfolio','project','results','about','pricing','expert','expertSent','becomeMentor','mentor','bookMentor'];
 function isFoundingWindow(){return new Date().getFullYear()<=FOUNDING.joinByYear;}
 function joinedInFoundingWindow(u){if(!u)return false;const y=parseInt(String(u.joinedAt||'').slice(0,4),10);return y?y<=FOUNDING.joinByYear:isFoundingWindow();}
 function foundingCount(){return (DB.users||[]).filter(u=>u.founding).length;}
@@ -1373,7 +1374,7 @@ function render(){
   updateSEO();
   wire();
 }
-const NAV_LINKS=[['about','About'],['resources','Resources'],['experts','Experts'],['review','Portfolio Review'],['becomeMentor','Become a Mentor']];
+const NAV_LINKS=[['about','About'],['resources','Resources'],['blog','Blog'],['experts','Experts'],['review','Portfolio Review'],['becomeMentor','Become a Mentor']];
 function navLinksHTML(){return NAV_LINKS.map(l=>{const cta=l[0]==='becomeMentor';const on=route.name===l[0]||(l[0]==='experts'&&route.name==='pros');return `<a data-go="${l[0]}" class="${cta?'navcta':''}${on&&!cta?' on':''}">${l[1]}</a>`;}).join('');}
 function navBurger(){return `<button class="nav-burger" data-burger aria-label="Menu"><span></span><span></span><span></span></button>`;}
 function navMobileMenu(){return `<div class="nav-mobile" id="navMobile">${navLinksHTML()}</div>`;}
@@ -1400,6 +1401,7 @@ function pageHTML(){
     case 'addProject':return viewAddProject();
     case 'folder':return viewFolder();
     case 'resources':return viewResources();
+    case 'blog':return viewBlog();
     case 'guides':return viewGuides();
     case 'review':return viewReview();
     case 'experts':return viewExperts();
@@ -2380,6 +2382,24 @@ function viewFolder(){
   </div>`;
 }
 
+/* ---------- BLOG ---------- */
+function viewBlog(){
+  return `<div class="wrap" style="max-width:1000px">
+    <div class="res-hero">
+      <div class="res-kick">Blog</div>
+      <h1>Stories &amp; portfolio breakdowns</h1>
+      <p class="sub">Student journeys, real accepted portfolios broken down piece by piece, and honest opinion from people who've been through it.</p>
+    </div>
+    <div class="res-sec">
+      <div class="empty" style="margin-top:8px;text-align:center;padding:44px 20px">
+        <div style="font-size:34px">📝</div>
+        <h3 style="color:var(--ink);font-size:20px;margin:10px 0 6px">The Blog is coming soon</h3>
+        <p style="max-width:460px;margin:0 auto 18px;color:var(--ink-2)">We're writing the first breakdowns now. In the meantime, start building with the Portfolio guides in Resources.</p>
+        <button class="btn btn-primary" data-go="resources">Go to Resources →</button>
+      </div>
+    </div>
+  </div>`;
+}
 /* ---------- RESOURCES ---------- */
 function wireSchoolSearch(el){
   const combo=el.querySelector('[data-res-combo]');if(!combo)return;
@@ -3250,7 +3270,7 @@ function wire(){
   wireSchoolSearch(el);
   el.querySelectorAll('[data-res-school]').forEach(b=>b.onclick=()=>go('results',{school:b.dataset.resSchool}));
   el.querySelectorAll('[data-res-guide]').forEach(b=>b.onclick=()=>toast('Guide coming soon — “'+b.dataset.resGuide+'”','✍'));
-  const resB=el.querySelector('[data-res-blog]');if(resB)resB.onclick=()=>toast('Blog — coming soon','📝');
+  const resB=el.querySelector('[data-res-blog]');if(resB)resB.onclick=()=>go('blog');
   el.querySelectorAll('[data-guidescroll]').forEach(a=>a.onclick=()=>{const t=el.querySelector('#'+a.dataset.guidescroll);if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});
   if(route.name==='guides'&&route.params.id){const g=el.querySelector('#'+route.params.id);if(g)setTimeout(()=>g.scrollIntoView({block:'start'}),0);}
   el.querySelectorAll('[data-add-project]').forEach(b=>b.onclick=e=>{e.stopPropagation();go('addProject',{id:b.dataset.addProject});});
