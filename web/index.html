@@ -677,8 +677,8 @@
     .pf-fab-like{display:flex;position:fixed;right:16px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:999px !important;background:var(--accent);color:#fff;border:none;align-items:center;justify-content:center;box-shadow:0 10px 26px -6px rgba(0,180,136,.55);cursor:pointer}
     .pf-fab-like.on{background:var(--accent-2);box-shadow:0 10px 26px -6px rgba(0,155,116,.6)}
     .pf-fab-like .cnt{position:absolute;top:-4px;right:-4px;background:#fff;color:var(--ink);font-size:11px;font-weight:800;min-width:20px;height:20px;border-radius:999px !important;display:grid;place-items:center;padding:0 5px;box-shadow:0 2px 6px rgba(0,0,0,.18)}
-    .btn-useapp{display:inline-flex;align-items:center;height:34px;padding:0 15px;border-radius:999px !important;background:var(--blue);color:#fff;font-weight:800;font-size:13px;border:none;cursor:pointer}
-    .nav-right .btn-outline.hide-mobile{display:none}
+    .btn-useapp{display:inline-flex;align-items:center;height:34px;padding:0 16px;border-radius:999px !important;background:var(--blue);color:#fff;font-weight:800;font-size:13px;border:none;cursor:pointer;white-space:nowrap}
+    .nav-right .hide-mobile{display:none}
   }
   .msess-tiles{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
   .msess-tile{flex:1;min-width:120px;background:#f7f8fa;border-radius:14px !important;padding:14px 16px}
@@ -1058,15 +1058,25 @@
   .faq p{color:var(--ink-2);font-size:14px;margin-top:8px;line-height:1.6}
   @media(max-width:860px){.ex-layout{grid-template-columns:1fr}.exd-grid{grid-template-columns:1fr}.exd-steps{grid-template-columns:1fr 1fr}}
   @media(max-width:620px){.land-nav{display:none}}
-  .nav-burger{display:none;flex-direction:column;justify-content:center;gap:4px;width:40px;height:40px;border:1.5px solid var(--line);border-radius:10px;background:#fff;cursor:pointer;padding:0 9px;flex:0 0 auto}
-  .nav-burger span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:.2s}
-  .nav-burger.on span:nth-child(1){transform:translateY(6px) rotate(45deg)}
-  .nav-burger.on span:nth-child(2){opacity:0}
-  .nav-burger.on span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+  .nav-burger{display:none;flex-direction:column;align-items:flex-end;justify-content:center;gap:5px;width:30px;height:40px;border:none;border-radius:0;background:none;cursor:pointer;padding:0;flex:0 0 auto}
+  .nav-burger span{display:block;height:2.5px;border-radius:2px;transform-origin:center;transition:width .28s cubic-bezier(.34,1.56,.64,1),transform .28s cubic-bezier(.34,1.56,.64,1),opacity .18s,background .2s}
+  .nav-burger span:nth-child(1){width:68%;background:var(--accent)}
+  .nav-burger span:nth-child(2){width:100%;background:var(--accent-2)}
+  .nav-burger span:nth-child(3){width:44%;background:var(--accent)}
+  .nav-burger:hover span:nth-child(1){width:44%}
+  .nav-burger:hover span:nth-child(2){width:62%}
+  .nav-burger:hover span:nth-child(3){width:100%}
+  .nav-burger:active span:nth-child(1){width:100%}
+  .nav-burger:active span:nth-child(3){width:72%}
+  .nav-burger.on span{width:100% !important;background:var(--ink) !important}
+  .nav-burger.on span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+  .nav-burger.on span:nth-child(2){opacity:0;transform:scaleX(0)}
+  .nav-burger.on span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
   .nav-mobile{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow);flex-direction:column;padding:6px 18px 14px;z-index:45}
   .nav-mobile a{padding:13px 4px;font-size:15.5px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line-2);cursor:pointer}
   .nav-mobile a:last-child{border-bottom:none}
   .nav-mobile a.on{color:var(--accent)}
+  .nav-mobile a.nm-cta{color:var(--accent-2);font-weight:800;border-bottom:none;margin-top:4px}
   .nav-mobile.open{display:flex}
   @media(max-width:620px){.nav-burger{display:flex}}
 
@@ -1457,14 +1467,14 @@ function render(){
 const NAV_LINKS=[['about','About'],['resources','Resources'],['blog','Blog'],['experts','Experts'],['review','Portfolio Review'],['becomeMentor','Become a Mentor']];
 function navLinksHTML(){return NAV_LINKS.map(l=>{const cta=l[0]==='becomeMentor';const on=route.name===l[0]||(l[0]==='experts'&&route.name==='pros');return `<a data-go="${l[0]}" class="${cta?'navcta':''}${on&&!cta?' on':''}">${l[1]}</a>`;}).join('');}
 function navBurger(){return `<button class="nav-burger" data-burger aria-label="Menu"><span></span><span></span><span></span></button>`;}
-function navMobileMenu(){return `<div class="nav-mobile" id="navMobile">${navLinksHTML()}</div>`;}
+function navMobileMenu(){const guest=!me();return `<div class="nav-mobile" id="navMobile">${navLinksHTML()}${guest?`<a data-go="login">Log in</a><a class="nm-cta" data-go="signup">Sign up free →</a>`:''}</div>`;}
 function publicHeader(){return `<header class="nav" style="position:relative"><div class="nav-inner">
     <a class="brand" data-go="landing">${brandInner()}</a>
     <nav class="land-nav">${navLinksHTML()}</nav>
     <div class="nav-right">
       <button class="btn-useapp" data-useapp>Use App</button>
       <button class="btn btn-outline btn-sm hide-mobile" data-go="login">Log in</button>
-      <button class="btn btn-primary btn-sm" data-go="signup">Sign up</button>
+      <button class="btn btn-primary btn-sm hide-mobile" data-go="signup">Sign up</button>
       ${navBurger()}
     </div>
   </div>${navMobileMenu()}</header>`;}
