@@ -539,6 +539,55 @@
   .res-blogptr .t{font-size:16px;font-weight:800}
   .res-blogptr .s{font-size:13px;color:var(--ink-2);margin-top:2px;max-width:640px}
   .res-blogptr button{background:var(--accent);color:#fff;font-weight:800;font-size:14px;border:none;padding:11px 22px;border-radius:999px !important;white-space:nowrap;cursor:pointer}
+  /* ---- Blog / Newsroom index ---- */
+  .blg-feat{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:6px}
+  @media(max-width:820px){.blg-feat{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.blg-feat{grid-template-columns:1fr 1fr}}
+  .blg-fcard{cursor:pointer;text-align:left;background:none;border:none;padding:0;display:flex;flex-direction:column;color:inherit;font:inherit}
+  .blg-fthumb{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px !important;background:var(--panel);display:block}
+  .blg-ftitle{font-size:15px;font-weight:700;margin-top:10px;line-height:1.3;transition:color .15s}
+  .blg-fcard:hover .blg-ftitle{color:var(--accent-2)}
+  .blg-filter{display:flex;gap:12px;align-items:center;margin:34px 0 2px;flex-wrap:wrap}
+  .blg-select{appearance:none;border:1.5px solid var(--line);border-radius:10px !important;padding:11px 38px 11px 15px;font-size:14.5px;font-weight:600;color:var(--ink);background:#fff url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237a8098' stroke-width='2.6'><path d='m6 9 6 6 6-6'/></svg>") no-repeat right 14px center;cursor:pointer}
+  .blg-search{display:flex;align-items:center;gap:9px;border:1.5px solid var(--line);border-radius:10px !important;padding:11px 15px;font-size:14.5px;background:#fff;flex:1;min-width:200px;max-width:340px}
+  .blg-search input{border:none;outline:none;font-size:14.5px;flex:1;color:var(--ink);background:transparent}
+  .blg-list{margin-top:8px;border-top:1px solid var(--line)}
+  .blg-row{display:grid;grid-template-columns:1fr 140px;gap:26px;padding:22px 2px;border-bottom:1px solid var(--line);cursor:pointer;align-items:start}
+  .blg-cat{font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+  .blg-h{font-size:19px;font-weight:800;margin:7px 0 7px;line-height:1.25;letter-spacing:-.01em;transition:color .15s}
+  .blg-row:hover .blg-h{color:var(--accent-2)}
+  .blg-ex{font-size:14px;color:var(--ink-2);margin:0;max-width:640px}
+  .blg-rthumb{width:140px;height:104px;object-fit:cover;border-radius:6px !important;background:var(--panel)}
+  @media(max-width:600px){.blg-row{grid-template-columns:1fr;gap:12px}.blg-rthumb{width:100%;height:150px;order:-1}}
+  .blg-empty{padding:40px 0;text-align:center;color:var(--muted);font-size:14.5px}
+  .blg-pager{display:flex;gap:6px;justify-content:center;align-items:center;margin-top:34px;flex-wrap:wrap}
+  .blg-pg{min-width:32px;height:32px;border:1px solid var(--line);background:#fff;border-radius:7px !important;font-size:13px;font-weight:700;color:var(--ink-2);cursor:pointer;display:grid;place-items:center;padding:0 9px}
+  .blg-pg:hover:not(.on):not(:disabled){border-color:var(--accent-line);color:var(--accent-2)}
+  .blg-pg.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .blg-pg:disabled{opacity:.4;cursor:default}
+  .blg-dots{color:var(--muted);padding:0 2px}
+  /* ---- Article (editorial) ---- */
+  .art-wrap{max-width:680px;margin:0 auto;padding:6px 0 30px}
+  .art-back{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--muted);background:none;border:none;cursor:pointer;padding:0;margin-bottom:26px}
+  .art-back:hover{color:var(--accent-2)}
+  .art-kicker{font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:#b8912e}
+  .art-h1{font-family:Georgia,"Times New Roman",serif;font-size:42px;line-height:1.1;letter-spacing:-.01em;margin:12px 0 14px;font-weight:700;color:var(--ink)}
+  @media(max-width:640px){.art-h1{font-size:30px}}
+  .art-deck{font-family:Georgia,serif;font-size:20px;line-height:1.45;color:var(--ink-2);margin:0 0 22px}
+  .art-byline{font-size:13px;color:var(--ink);border-top:1px solid var(--ink);border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:6px}
+  .art-byline .n{font-weight:800}
+  .art-byline .d{color:var(--muted);text-transform:uppercase;letter-spacing:.04em;font-size:11.5px;margin-top:3px}
+  .art-body{font-family:Georgia,"Times New Roman",serif;font-size:18.5px;line-height:1.72;color:#222}
+  .art-body p{margin:0 0 20px}
+  .art-body p.first{margin-top:26px}
+  .art-body p.first:first-letter{initial-letter:3;-webkit-initial-letter:3;font-weight:700;margin-right:10px;color:#111}
+  .art-body strong{font-weight:700;color:#111}
+  .art-body .sub{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;font-size:14px;font-weight:800;letter-spacing:.02em;color:#111;margin:34px 0 6px}
+  .art-body .pull{font-family:Georgia,serif;font-size:23px;line-height:1.4;color:#111;border-left:3px solid #111;padding:6px 0 6px 20px;margin:28px 0;font-style:italic}
+  .art-sources{margin-top:40px;border-top:1px solid var(--line);padding-top:16px;font-size:12.5px;color:var(--muted);line-height:1.7}
+  .art-sources a{color:var(--accent-2);text-decoration:none}
+  .art-sources b{color:#111}
+  .art-soon{font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;background:var(--panel);border-radius:12px !important;padding:22px 24px;margin-top:26px;color:var(--ink-2);font-size:15px}
   /* ---- Portfolio Guides reading page ---- */
   .gd-wrap{max-width:720px;margin:0 auto}
   .gd-ix{border:1px solid var(--line);border-radius:16px !important;padding:22px 24px;margin-bottom:20px;background:var(--panel,#f6f8f7)}
@@ -1348,7 +1397,7 @@ function updateSEO(){
   md.setAttribute('content',desc||'');
 }
 
-const GUEST_OK=['resources','blog','guides','review','experts','pros','portfolio','project','results','about','pricing','expert','expertSent','becomeMentor','mentor','bookMentor'];
+const GUEST_OK=['resources','blog','article','guides','review','experts','pros','portfolio','project','results','about','pricing','expert','expertSent','becomeMentor','mentor','bookMentor'];
 function isFoundingWindow(){return new Date().getFullYear()<=FOUNDING.joinByYear;}
 function joinedInFoundingWindow(u){if(!u)return false;const y=parseInt(String(u.joinedAt||'').slice(0,4),10);return y?y<=FOUNDING.joinByYear:isFoundingWindow();}
 function foundingCount(){return (DB.users||[]).filter(u=>u.founding).length;}
@@ -1402,6 +1451,7 @@ function pageHTML(){
     case 'folder':return viewFolder();
     case 'resources':return viewResources();
     case 'blog':return viewBlog();
+    case 'article':return viewArticle();
     case 'guides':return viewGuides();
     case 'review':return viewReview();
     case 'experts':return viewExperts();
@@ -2383,22 +2433,130 @@ function viewFolder(){
 }
 
 /* ---------- BLOG ---------- */
+const ART_BODY_CLOSE=`
+    <p class="first">On a January morning in 2026, the California College of the Arts confirmed what much of the Bay Area art world had been bracing for. After nearly a century and a half, the school — the region's last independent private college devoted to art and design — will close at the end of the 2026–27 academic year. Its San Francisco campus is to be sold to Vanderbilt University, which plans to run it as a West Coast outpost.</p>
+    <p>The announcement did not come out of nowhere. Two years earlier, in January 2024, the Pennsylvania Academy of the Fine Arts, founded in 1805 and the oldest art school and museum in the country, voted to stop granting degrees, graduating its final class in the spring of 2025. The San Francisco Art Institute had already closed in 2022. The for-profit Art Institutes chain collapsed in 2023. The University of the Arts in Philadelphia shut its doors abruptly in 2024.</p>
+    <p>Taken together, the closures amount to a reckoning for the independent art school as a model — long a fixture of American cultural life, and now among the most financially exposed corners of higher education.</p>
+    <p class="sub">The numbers behind the closures</p>
+    <p>The strain shows up first in enrollment and budgets. In explaining its decision, the California College of the Arts pointed to a deficit of roughly <strong>$20 million</strong> and enrollment that had fallen by about a third from its 2019 peak of some 1,800 students — a decline that a state grant and a costly campus renovation could not reverse. The Pennsylvania Academy had watched its enrollment fall by <strong>nearly half in a decade</strong>, from about 349 students to 178. Across the sector, the College Art Association counts roughly <strong>36 art colleges today, down from about 42 in the late 1990s.</strong></p>
+    <p>The economics are unforgiving, said Jennifer Rissler, the association's president, and Deborah Obalil, who leads the Association of Independent Colleges of Art and Design. These schools tend to be small and heavily dependent on tuition, with thin endowments and little margin for error when a class arrives short. Art education is also expensive to deliver — studios, equipment, materials, small classes — and a stand-alone art school cannot spread those costs across cheaper lecture courses the way a large university can. They do not, as Ms. Obalil has put it, enjoy the savings that come with scale.</p>
+    <p>Demand has shifted, too. A shrinking population of college-age students, parents increasingly wary of the price and career prospects of a fine-arts degree, and universities that market job placement have all steered applicants toward programs with clearer professional paths. Schools built solely around fine art, without design or architecture, have felt the pressure most acutely.</p>
+    <p class="sub">A reorganization, more than a disappearance</p>
+    <p>Yet the story is not simply one of loss. Increasingly, struggling art schools are being absorbed by universities rather than shuttered outright. The School of the Museum of Fine Arts joined Tufts. The Corcoran merged into George Washington University. Pacific Northwest College of Art became part of Willamette University. Vermont College of Fine Arts affiliated with CalArts. Now the California College of the Arts campus will carry on under Vanderbilt. Ms. Rissler has said she hopes such partnerships, rather than closures, become the sector's default.</p>
+    <p>None of this, though, is a verdict on art schools themselves, and the causes vary from campus to campus. Some of the schools that closed were indeed small and thinly funded. The California College of the Arts was a different case: it enrolled some 1,800 students at its peak and ran on a budget of about $60 million. Its difficulties had more specific roots — a near-total reliance on tuition just as enrollment fell by a third, and a $97.5 million campus expansion whose bills came due as students grew scarcer, all in one of the most expensive cities in the country in which to run a school. Many of the largest and best-known art schools, meanwhile, remain robust, and their immersive, single-minded studio culture is something a university rarely matches. Nor is a university automatically the safer choice: a financially healthy campus is no guarantee that its art department is a priority, and university arts budgets face cuts of their own. The practical lesson is narrower — to weigh each school on its own footing, rather than by category.</p>
+    <p>Something is lost all the same. Independent art schools were places organized entirely around making and questioning — institutions where, as Deborah Obalil of the Association of Independent Colleges of Art and Design puts it, free expression is part of the DNA. Because that is what these schools are built for, she argues, their steady disappearance is a signal worth reading: a measure of how much a society still makes room for it. Each one that closes narrows that space.</p>
+    <div class="pull">Their closures, Ms. Obalil warns, can be "the canary in the coal mine" for how a society values free expression.</div>
+    <p>The map of American art education is being redrawn, campus by campus. What endures, for the students still deciding where to apply, is older than any single institution: the work itself, the habit of looking closely, and the people willing to teach the next ones how. Those do not close.</p>`;
+const ART_SOURCES_CLOSE=`<b>Sources</b> (verified, 2026): <a href="https://www.theartnewspaper.com/2026/01/13/california-college-arts-closing-vanderbilt-university-takeover" target="_blank" rel="noopener">The Art Newspaper — CCA to close, Vanderbilt takeover</a> · <a href="https://edsource.org/updates/california-college-of-the-arts-will-close-amid-financial-difficulties" target="_blank" rel="noopener">EdSource — CCA closing amid financial difficulties</a> · <a href="https://www.highereddive.com/news/pennsylvania-academy-of-the-fine-arts-pafa-to-end-degree-programs/704357/" target="_blank" rel="noopener">Higher Ed Dive — PAFA to end degree programs</a> · <a href="https://www.insidehighered.com/news/institutions/specialized-colleges/2024/04/08/enrollment-declines-threaten-small-independent" target="_blank" rel="noopener">Inside Higher Ed — Enrollment declines threaten small independent art colleges</a> · <a href="https://news.artnet.com/art-world/pennsylvania-academy-of-the-fine-arts-closes-college-2418188" target="_blank" rel="noopener">Artnet — PAFA closes its college</a>`;
+const ART_BODY_AI=`
+    <p class="first">A student assembling a portfolio this year runs into a strange problem before submitting a single image: the schools cannot agree on what art even is anymore. Apply to the University of Michigan's Stamps School, and the instructions are blunt — work made with artificial intelligence <strong>cannot</strong> go in the portfolio. Apply to the Rhode Island School of Design, and the tone flips: the school says it <strong>embraces</strong> the ethical use of A.I. in the creative process, so long as you describe how and where you used it. Apply to the Savannah College of Art and Design, and the official portfolio pages say nothing about A.I. at all.</p>
+    <p>In the span of one application season, generative image tools have gone from novelty to open question at the center of art admissions — and the schools are answering it in almost every possible way at once.</p>
+    <p class="sub">A spectrum, not a rule</p>
+    <p>At one end sits an outright ban. Michigan's Stamps School states plainly that A.I.-generated work is not permitted in the application portfolio. Near it, the College for Creative Studies in Detroit allows A.I. only for <strong>process and research</strong> — never as a final image — capping it at a single piece and requiring applicants to cite the prompts and platforms they used, and to keep other artists' names out of those prompts.</p>
+    <p>A step over, the School of Visual Arts and Pratt Institute draw the same line in nearly identical language: images <strong>fully rendered</strong> by generative A.I. are prohibited, but A.I. tools used to <strong>enhance</strong> an otherwise original work are allowed — if the applicant discloses exactly which tools and prompts were involved. Both also bar A.I. text generators from the written application entirely.</p>
+    <p>Further along are the schools that ask mainly for <strong>honesty</strong>. RISD, Parsons and CalArts all permit A.I. in some form but require you to disclose it; Parsons goes further, strongly recommending applicants not submit work created entirely by A.I., and reserving the right to ask for more materials if they do. CalArts warns that heavy A.I. use may trigger additional review. And then there is the far end of the spectrum — SCAD, the School of the Art Institute of Chicago, MICA and ArtCenter — whose public portfolio pages, as of this year, carry <strong>no explicit A.I. policy at all</strong>.</p>
+    <p class="sub">What the schools say they are looking for</p>
+    <p>Beneath the patchwork of rules is a striking amount of agreement about the stakes. Administrators keep returning to the idea that a portfolio is meant to show something a prompt cannot. Nate Harrison, dean of academic affairs at the School of the Museum of Fine Arts at Tufts, has said flatly that <strong>"we cannot fight A.I."</strong> — and argued that the job of an art school is to help students build a creative practice that can't be reduced to a text prompt. His colleague in admissions, Thomas Duncan, has pushed to treat a disclosed A.I. image not as a red flag but as a starting point for conversation.</p>
+    <p>Others reach for history. Mike Essl, who leads the art school at Cooper Union, has compared the moment to <strong>"the birth of photography all over again,"</strong> and warned that limiting the tools available to artists is bad practice. It is a bet that image generators will be absorbed, as the camera was, rather than banned.</p>
+    <p class="sub">The worries underneath</p>
+    <p>Not everyone is sanguine. The most practical problem is verification: how does an admissions committee know whose hand made the work? Deborah Obalil, who leads the Association of Independent Colleges of Art and Design, has put it simply — this is the conversation right now, and <strong>"no one has the answer."</strong></p>
+    <p>There are deeper concerns, too. The National Art Education Association, in a formal position statement, treats A.I. imagery submitted without attribution as a form of plagiarism, and warns that leaning too heavily on generators can dilute a young artist's understanding of the creative process and stunt the development of a personal voice. Skeptics go blunter still. The illustrator Molly Crabapple has argued that no one needs to take on art-school debt merely to type prompts into a generator — a challenge, in effect, to what an art education is for.</p>
+    <div class="pull">"That is the conversation right now. And no one has the answer." — Deborah Obalil, president of the Association of Independent Colleges of Art and Design</div>
+    <p class="sub">Adapting, not just policing</p>
+    <p>The more optimistic camp is busy building rather than banning. MassArt and CalArts have partnered on courses in "A.I. in creative practice." SVA's institutional guidelines frame generative A.I. as "a means, not an end" — useful for augmenting a studio practice, never a substitute for the work of exploration — while still demanding full transparency about tools and prompts. At Ringling College, an A.I. coordinator sums up the pitch to students in a line now heard across studios: A.I. won't replace you, but someone who knows how to use it might.</p>
+    <p>Even the machinery of admissions is shifting. The School of the Art Institute of Chicago won a grant to bring A.I. and data analysis into its admissions operation — though, notably, to help with access and planning, not to judge portfolios. The human read of the artwork, for now, stays human.</p>
+    <p class="sub">What it means if you're applying</p>
+    <p>For a student, the takeaway is less about taking sides than about paying attention. Because the rules genuinely differ from school to school, the only safe move is to <strong>read each school's own policy before you submit</strong>, and, wherever A.I. touched a piece, to <strong>disclose it plainly</strong> — the schools that allow A.I. almost all require exactly that, and the ones that ban it are increasingly on the lookout.</p>
+    <p>The through-line, from the strictest ban to the warmest embrace, is the same. What admissions officers keep saying they want to see is evidence of a person behind the work — observation, process, a point of view that developed over time. That is the part a prompt still can't fake, and, for now, the part a portfolio is being asked to prove.</p>`;
+const ART_SOURCES_AI=`<b>Sources</b> (verified, 2026): <a href="https://stamps.umich.edu/undergraduate-admissions/portfolio" target="_blank" rel="noopener">U-Michigan Stamps — portfolio (AI not permitted)</a> · <a href="https://www.risd.edu/admissions/first-year/apply-risd" target="_blank" rel="noopener">RISD — apply (AI disclosure)</a> · <a href="https://www.ccsdetroit.edu/admissions/undergraduate-admissions/undergraduate-portfolio-requirements/" target="_blank" rel="noopener">CCS — portfolio requirements (AI limits)</a> · <a href="https://sva.edu/admissions/how-to-apply/undergraduate-faq" target="_blank" rel="noopener">SVA — undergraduate FAQ (AI)</a> · <a href="https://www.pratt.edu/resources/undergraduate-portfolio-requirements/" target="_blank" rel="noopener">Pratt — portfolio requirements (AI)</a> · <a href="https://www.newschool.edu/parsons/how-to-apply-undergraduate/" target="_blank" rel="noopener">Parsons — how to apply (AI disclosure)</a> · <a href="https://calarts.edu/admissions-aid/admissions/application-process/ai-guidelines" target="_blank" rel="noopener">CalArts — AI guidelines for admissions</a> · <a href="https://news.artnet.com/art-world/art-schools-and-artificial-intelligence-2377262" target="_blank" rel="noopener">Artnet — How art schools are navigating A.I.</a> · <a href="https://www.arteducators.org/resources/platform-and-position-statements/naea-position-statements-curriculum/1303-naea-position-statement-on-use-of-artificial-intelligence-ai-and-ai-generated-imagery-in-visual-arts-education/" target="_blank" rel="noopener">NAEA — position statement on A.I. in visual arts education</a> · <a href="https://hyperallergic.com/school-is-back-in-session-and-so-are-ai-art-classes/" target="_blank" rel="noopener">Hyperallergic — A.I. art classes</a> · <a href="https://massart.edu/news/massart-and-calarts-partner-to-launch-ai-in-creative-practice-courses/" target="_blank" rel="noopener">MassArt × CalArts — A.I. in Creative Practice</a> · <a href="https://www.insidehighered.com/news/admissions/2024/04/29/art-focused-university-using-ai-admissions" target="_blank" rel="noopener">Inside Higher Ed — SAIC using A.I. in admissions</a>`;
+const BLOG_POSTS=[
+  {id:'as-art-schools-close',cat:'Analysis',kicker:'Higher Education',date:'2026-01-14',feat:true,title:'As the Art Schools Close',deck:"A run of shutdowns at storied American art colleges has laid bare a slow financial squeeze — and is quietly redrawing where the next generation learns to make art.",excerpt:'A run of shutdowns at storied American art colleges has laid bare a slow financial squeeze — and is quietly redrawing where the next generation learns to make art.',body:ART_BODY_CLOSE,sources:ART_SOURCES_CLOSE},
+  {id:'ai-portfolio-split',cat:'Analysis',kicker:'Higher Education · Technology',date:'2026-07-08',feat:true,title:'As A.I. Reaches the Portfolio, Art Schools Split',deck:"One school bans A.I.-generated work outright. Another calls it the next brush. A third says nothing at all. For applicants, the rules now depend entirely on where they apply.",excerpt:'One school bans A.I.-generated work outright. Another calls it the next brush. A third says nothing at all — the rules now depend entirely on where you apply.',body:ART_BODY_AI,sources:ART_SOURCES_AI},
+  {id:'ava-risd-breakdown',cat:'Portfolio Breakdown',date:'2026-06-30',feat:true,title:'How Ava got into RISD, piece by piece',deck:'A RISD Graphic Design admit walks through the twelve pieces she submitted — what each one was doing, and why it stayed in.',excerpt:'A RISD Graphic Design admit walks through the twelve pieces she submitted — what each one was doing, and why it stayed in.'},
+  {id:'business-to-artcenter',cat:'Student Story',date:'2026-06-18',feat:true,title:'From business major to ArtCenter grad ID',deck:'A career-changer on building a graduate industrial-design portfolio from zero, nights and weekends, in eighteen months.',excerpt:'A career-changer on building a graduate industrial-design portfolio from zero, nights and weekends, in eighteen months.'},
+  {id:'ug-vs-grad',cat:'Guide',date:'2026-06-02',title:'Undergrad vs grad portfolios: what actually changes',deck:'Range and potential get you into a BFA. A grad portfolio asks for something else — a point of view. Here is the difference, concretely.',excerpt:'Range and potential get you into a BFA. A grad portfolio asks for something else — a point of view. Here is the difference, concretely.'},
+  {id:'sketchbook-that-gets-read',cat:'Portfolio Breakdown',date:'2026-05-28',title:'The sketchbook that gets read',deck:'',excerpt:'Process work is where reviewers look hardest. What to leave in, what to cut, and how to sequence a sketchbook so it tells a story.'},
+  {id:'what-reviewers-look-for',cat:'Analysis',date:'2026-05-15',title:'What admissions reviewers actually look for',deck:'',excerpt:'Not polish, and not a single medium. We asked former reviewers what makes them lean in — and what makes a strong technical portfolio still fall flat.'},
+  {id:'three-questions-calarts',cat:'Interview',date:'2026-05-04',title:'Three questions with a CalArts animation grad',deck:'',excerpt:'On the story reel, life drawing, and the one habit that mattered more than any single assignment.'},
+  {id:'gap-year-portfolio',cat:'Opinion',date:'2026-04-22',title:'Should you take a gap year to build your portfolio?',deck:'',excerpt:'A year of focused making can transform an application — or quietly stall it. How to tell which one you are signing up for.'},
+  {id:'parsons-challenge',cat:'Portfolio Breakdown',date:'2026-04-10',title:'Inside a Parsons fashion Challenge Project',deck:'',excerpt:'A Parsons admit breaks down the prompt-driven project that anchored her application, from first sketch to final board.'},
+  {id:'how-many-pieces',cat:'Guide',date:'2026-03-30',title:'How many pieces is enough?',deck:'',excerpt:'Twelve versus twenty, home tests, supplements — what the numbers really mean, and why the count matters less than you think.'},
+  {id:'observational-drawing',cat:'Student Story',date:'2026-03-16',title:'The observational drawing that changed my application',deck:'',excerpt:'One SVA Illustration admit on why sixty percent of his portfolio was drawn from life — and what that signalled to reviewers.'},
+  {id:'supplement-schools',cat:'Analysis',date:'2026-03-02',title:'Why “supplement” schools still want your art',deck:'',excerpt:'Yale, Harvard, Brown and dozens more do not require a portfolio — but an optional arts supplement is read, and it counts. Here is how.'},
+  {id:'reapplying-done-right',cat:'Student Story',date:'2026-02-14',title:'From rejection to RISD: reapplying, done right',deck:'',excerpt:'What she changed the second time around — and the feedback loop that turned a wait-list into an acceptance.'},
+  {id:'reading-like-a-reviewer',cat:'Opinion',date:'2026-02-01',title:'Reading a portfolio like a reviewer',deck:'',excerpt:'Learn to see your own work the way a committee does: in ninety seconds, on a screen, next to a thousand others.'}
+];
+function blogImg(p){return ph(p.id+p.title,640,480);}
+function fmtDate(s){const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];const d=String(s||'').split('-');if(d.length<3)return '';return M[(+d[1])-1]+' '+(+d[2])+', '+d[0];}
+const BLOG_CATS=['All','Analysis','Student Story','Portfolio Breakdown','Interview','Guide','Opinion'];
+let BLOG_STATE={cat:'All',q:'',page:1};
+const BLOG_PER=6;
+function blogFiltered(){return BLOG_POSTS.filter(function(p){if(p.feat)return false;var okc=(BLOG_STATE.cat==='All'||p.cat===BLOG_STATE.cat);var q=BLOG_STATE.q.toLowerCase();var okq=(!q||(p.title+' '+p.excerpt+' '+p.cat).toLowerCase().indexOf(q)>=0);return okc&&okq;});}
 function viewBlog(){
+  BLOG_STATE={cat:'All',q:'',page:1};
+  const feat=BLOG_POSTS.filter(p=>p.feat).slice(0,4);
+  const fcards=feat.map(p=>`<button class="blg-fcard" data-go="article" data-id="${p.id}"><img class="blg-fthumb" src="${blogImg(p)}" alt=""><div class="blg-ftitle">${esc(p.title)}</div></button>`).join('');
   return `<div class="wrap" style="max-width:1000px">
     <div class="res-hero">
       <div class="res-kick">Blog</div>
       <h1>Stories &amp; portfolio breakdowns</h1>
-      <p class="sub">Student journeys, real accepted portfolios broken down piece by piece, and honest opinion from people who've been through it.</p>
+      <p class="sub">The latest from Lukumo — stories and ideas on getting into art &amp; design school.</p>
     </div>
-    <div class="res-sec">
-      <div class="empty" style="margin-top:8px;text-align:center;padding:44px 20px">
-        <div style="font-size:34px">📝</div>
-        <h3 style="color:var(--ink);font-size:20px;margin:10px 0 6px">The Blog is coming soon</h3>
-        <p style="max-width:460px;margin:0 auto 18px;color:var(--ink-2)">We're writing the first breakdowns now. In the meantime, start building with the Portfolio guides in Resources.</p>
-        <button class="btn btn-primary" data-go="resources">Go to Resources →</button>
-      </div>
+    <div class="res-sec" style="margin-top:20px">
+      <div class="blg-feat">${fcards}</div>
     </div>
+    <div class="blg-filter">
+      <select class="blg-select" data-blog-cat>${BLOG_CATS.map(c=>`<option value="${c}">${c==='All'?'All stories':c}</option>`).join('')}</select>
+      <div class="blg-search">🔍 <input data-blog-q type="text" placeholder="Search stories…" autocomplete="off"/></div>
+    </div>
+    <div data-blog-list></div>
+    <div data-blog-pager></div>
   </div>`;
+}
+function renderBlogList(el){
+  const list=el.querySelector('[data-blog-list]');const pager=el.querySelector('[data-blog-pager]');
+  if(!list)return;
+  const all=blogFiltered();
+  const pages=Math.max(1,Math.ceil(all.length/BLOG_PER));
+  if(BLOG_STATE.page>pages)BLOG_STATE.page=pages;
+  const start=(BLOG_STATE.page-1)*BLOG_PER;
+  const rows=all.slice(start,start+BLOG_PER);
+  list.className='blg-list';
+  list.innerHTML=rows.length?rows.map(p=>`<div class="blg-row" data-go="article" data-id="${p.id}">
+      <div><div class="blg-cat">${esc(p.cat)} · ${fmtDate(p.date)}</div><div class="blg-h">${esc(p.title)}</div><p class="blg-ex">${esc(p.excerpt)}</p></div>
+      <img class="blg-rthumb" src="${blogImg(p)}" alt="">
+    </div>`).join(''):`<div class="blg-empty">No stories match “${esc(BLOG_STATE.q)}”. Try another search.</div>`;
+  if(pager){
+    if(pages<=1){pager.innerHTML='';}
+    else{
+      let btns='';
+      btns+=`<button class="blg-pg" data-blog-page="${BLOG_STATE.page-1}" ${BLOG_STATE.page===1?'disabled':''}>‹</button>`;
+      for(let i=1;i<=pages;i++){btns+=`<button class="blg-pg${i===BLOG_STATE.page?' on':''}" data-blog-page="${i}">${i}</button>`;}
+      btns+=`<button class="blg-pg" data-blog-page="${BLOG_STATE.page+1}" ${BLOG_STATE.page===pages?'disabled':''}>›</button>`;
+      pager.className='blg-pager';pager.innerHTML=btns;
+    }
+  }
+  list.querySelectorAll('[data-go="article"]').forEach(b=>b.onclick=()=>go('article',{id:b.dataset.id}));
+  if(pager)pager.querySelectorAll('[data-blog-page]').forEach(b=>{if(b.disabled)return;b.onclick=()=>{BLOG_STATE.page=+b.dataset.blogPage;renderBlogList(el);window.scrollTo({top:0,behavior:'smooth'});};});
+}
+function wireBlog(el){
+  const cat=el.querySelector('[data-blog-cat]');if(cat)cat.onchange=()=>{BLOG_STATE.cat=cat.value;BLOG_STATE.page=1;renderBlogList(el);};
+  const q=el.querySelector('[data-blog-q]');if(q)q.oninput=()=>{BLOG_STATE.q=q.value.trim();BLOG_STATE.page=1;renderBlogList(el);};
+  renderBlogList(el);
+}
+function viewArticle(){
+  const p=BLOG_POSTS.find(x=>x.id===route.params.id);
+  if(!p)return `<div class="wrap"><div class="art-wrap"><button class="art-back" data-go="blog">‹ Back to Blog</button><h1 class="art-h1">Story not found</h1><p class="art-deck">That story may have moved. Head back to the Blog to keep reading.</p></div></div>`;
+  const hasBody=!!(p.body&&p.body.trim());
+  return `<div class="wrap"><div class="art-wrap">
+    <button class="art-back" data-go="blog">‹ Blog</button>
+    <div class="art-kicker">${esc(p.kicker||p.cat)}</div>
+    <h1 class="art-h1">${esc(p.title)}</h1>
+    ${p.deck?`<p class="art-deck">${esc(p.deck)}</p>`:''}
+    <div class="art-byline"><span class="n">By Lukumo</span><div class="d">${esc(p.cat)} · ${fmtDate(p.date)}</div></div>
+    ${hasBody?`<div class="art-body">${p.body}</div>${p.sources?`<div class="art-sources">${p.sources}</div>`:''}`
+      :`<div class="art-soon"><strong>We're finishing this piece.</strong> This story is being written now — check back soon. In the meantime, the <a data-go="resources" style="color:var(--accent-2);font-weight:700;cursor:pointer;text-decoration:none">Portfolio guides</a> cover the essentials.</div>`}
+  </div></div>`;
 }
 /* ---------- RESOURCES ---------- */
 function wireSchoolSearch(el){
@@ -3268,6 +3426,7 @@ function wire(){
   const apUp=el.querySelector('[data-ap-upload]');if(apUp)apUp.onchange=async()=>{if(apUp.files[0]){const url=await fileToDataURL(apUp.files[0],900);const u=me();u.myWork=u.myWork||[];u.myWork.push({title:apUp.files[0].name.replace(/\.[^.]+$/,'').slice(0,40)||'Untitled',img:url});save();toast('Work added');render();}};
   const apStmt=el.querySelector('[data-ap-statement]');if(apStmt)apStmt.onchange=()=>{const u=me();u.statement=apStmt.value;save();};
   wireSchoolSearch(el);
+  if(route.name==='blog')wireBlog(el);
   el.querySelectorAll('[data-res-school]').forEach(b=>b.onclick=()=>go('results',{school:b.dataset.resSchool}));
   el.querySelectorAll('[data-res-guide]').forEach(b=>b.onclick=()=>toast('Guide coming soon — “'+b.dataset.resGuide+'”','✍'));
   const resB=el.querySelector('[data-res-blog]');if(resB)resB.onclick=()=>go('blog');
