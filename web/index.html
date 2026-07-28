@@ -869,6 +869,12 @@
   @media(max-width:720px){.filter-row{grid-template-columns:minmax(0,1fr)}}
   .filter-row .select{min-height:50px;min-width:0;border-color:var(--accent);font-weight:500;color:#474c58}
   .filter-row .select:focus{box-shadow:0 0 0 4px var(--accent-soft)}
+  .filter-combo{position:relative;min-width:0}
+  .filter-comboinput{width:100%;min-height:50px;border:1.5px solid var(--accent);border-radius:999px !important;padding:0 52px 0 22px;font-size:15px;font-weight:500;color:#474c58;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300b488' stroke-width='2.6'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 20px center;background-size:18px;outline:none}
+  .filter-comboinput:focus{box-shadow:0 0 0 4px var(--accent-soft)}
+  .filter-comboinput::placeholder{color:#474c58;opacity:1}
+  .filter-menu{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:50;border:1.5px solid var(--accent);border-radius:14px !important;background:#fff;box-shadow:0 18px 34px -20px rgba(18,19,31,.4);overflow:hidden auto;max-height:360px}
+  .filter-menu.hidden{display:none}
   .sort-row{display:flex;justify-content:flex-end;gap:18px;margin-bottom:22px;padding-right:10px}
   .sort-row button{font-weight:600;color:var(--muted);font-size:14.5px}
   .sort-row button.on{color:var(--accent)}
@@ -1215,7 +1221,7 @@ function searchSchools(q){q=String(q||'').trim().toLowerCase();if(!q)return [];v
 function hlName(name,q){q=String(q||'');var i=name.toLowerCase().indexOf(q.toLowerCase());if(i<0||!q)return esc(name);return esc(name.slice(0,i))+'<span class="res-mk">'+esc(name.slice(i,i+q.length))+'</span>'+esc(name.slice(i+q.length));}
 const MAJORS=["Graphic Design","Illustration","Animation","Motion Design","Comics / Sequential Art","Game Design","Concept Art / Entertainment Design","Interaction / UX Design","Design (Interdisciplinary)","Industrial / Product Design","Transportation Design","Toy Design","Furniture Design","Advertising","Fashion Design","Textiles / Fiber","Interior Design","Theater / Stage Design","Architecture","Landscape Architecture","Fine Arts / Painting","Drawing","Printmaking","Sculpture","Photography","Film / Video","Media Arts","Ceramics","Glass","Jewelry / Metalsmithing","Craft / Material Studies","Art Education","Visual / Critical Studies"];
 function schoolsForLevel(type){const set=new Set();DB.portfolios.forEach(p=>{if(!type||p.level===type)set.add(p.school);});return [...set].sort((a,b)=>a.localeCompare(b));}
-function majorsFor(type,school){const set=new Set();DB.portfolios.forEach(p=>{if((!type||p.level===type)&&(!school||p.school===school))set.add(p.major);});return [...set].sort((a,b)=>a.localeCompare(b));}
+function majorsFor(type,school){const set=new Set();DB.portfolios.forEach(p=>{if((!type||p.level===type)&&(!school||p.school===school))set.add(p.major);});if(school){const sd=SCHOOL_DATA.find(s=>s.name===school);if(sd){const pools=[];if(!type||type==='Undergraduate')pools.push(...(sd.ug||[]));if(!type||type==='Graduate')pools.push(...(sd.grad||[]));pools.forEach(m=>{if(m&&m.c)set.add(m.c);});}}return [...set].sort((a,b)=>a.localeCompare(b));}
 function portfolioReq(name,type){const s=SCHOOL_DATA.find(x=>x.name===name);if(!s)return null;if(type==='Undergraduate')return s.ug.length?(s.ugReq?'required':'optional'):null;if(type==='Graduate')return s.grad.length?(s.gradReq?'required':'optional'):null;const r=[];if(s.ug.length)r.push(s.ugReq?'required':'optional');if(s.grad.length)r.push(s.gradReq?'required':'optional');return r.includes('required')?'required':(r.length?'optional':null);}
 const LEVELS=['Undergraduate','Graduate'];
 const REQ_OPTIONS=['5–10 pieces','12–20 pieces','20–25 pieces','Observational drawing','Sketchbook / process work','Home test / assignment','Major-specific work','Self-directed work','Artist statement','Digital / time-based work'];
@@ -1519,7 +1525,7 @@ function browseBody(){
   return `${geoHero('See the portfolios that got in.','Real, accepted art & design portfolios — searchable by school and major. Browse the work that got in, then talk to the students who made it.')}
       <form class="filter-row" data-landing-filter>
         <select class="select" name="type"><option value="" disabled ${landingFilter.type?'':'selected'}>Select Admission Type</option>${LEVELS.map(l=>`<option ${landingFilter.type===l?'selected':''}>${l}</option>`).join('')}</select>
-        <select class="select" name="school"><option value="" disabled ${landingFilter.school?'':'selected'}>Select School</option>${schoolsForLevel(landingFilter.type).map(s=>`<option ${landingFilter.school===s?'selected':''}>${esc(s)}</option>`).join('')}</select>
+        <div class="filter-combo" data-home-combo><input class="filter-comboinput" data-home-school-input type="text" placeholder="Select School" value="${esc(landingFilter.school||'')}" autocomplete="off" role="combobox" aria-autocomplete="list"/><div class="filter-menu hidden" data-home-menu></div></div>
         <select class="select" name="major"><option value="" disabled ${landingFilter.major?'':'selected'}>Select Major</option>${majorsFor(landingFilter.type,landingFilter.school).map(m=>`<option ${landingFilter.major===m?'selected':''}>${esc(m)}</option>`).join('')}</select>
       </form>
       <div class="row" style="gap:8px;flex-wrap:wrap;margin-bottom:12px"><span style="font-weight:700;color:var(--muted);font-size:13px;margin-right:2px">Popular:</span>${top.map(s=>`<button class="pill-filter ${landingFilter.school===s?'active':''}" data-pop="${esc(s)}">${esc(shortName(s))}</button>`).join('')}</div>
@@ -2558,6 +2564,46 @@ function viewArticle(){
       :`<div class="art-soon"><strong>We're finishing this piece.</strong> This story is being written now — check back soon. In the meantime, the <a data-go="resources" style="color:var(--accent-2);font-weight:700;cursor:pointer;text-decoration:none">Portfolio guides</a> cover the essentials.</div>`}
   </div></div>`;
 }
+/* ---------- HOME school typeahead ---------- */
+function wireHomeSchool(el){
+  const combo=el.querySelector('[data-home-combo]');if(!combo)return;
+  const input=combo.querySelector('[data-home-school-input]');
+  const menu=combo.querySelector('[data-home-menu]');
+  const POP=['Rhode Island School of Design','School of Visual Arts','Savannah College of Art and Design','Carnegie Mellon University','University of California, Los Angeles','Parsons School of Design'];
+  let items=[],hi=-1;
+  function open(){menu.classList.remove('hidden');}
+  function close(){menu.classList.add('hidden');}
+  function paint(){menu.querySelectorAll('[data-hs-opt]').forEach((o,i)=>o.classList.toggle('hl',i===hi));}
+  function pick(name){landingFilter.school=name;landingFilter.major='';browseLimit=BROWSE_STEP;render();}
+  function clear(){landingFilter.school='';landingFilter.major='';browseLimit=BROWSE_STEP;render();}
+  function wireOpts(){
+    menu.querySelectorAll('[data-hs-opt]').forEach((o,i)=>{o.onmousedown=e=>{e.preventDefault();pick(o.dataset.name);};o.onmouseenter=()=>{hi=i;paint();};});
+    const clr=menu.querySelector('[data-hs-clear]');if(clr)clr.onmousedown=e=>{e.preventDefault();clear();};
+  }
+  function renderDefault(){
+    items=POP.filter(n=>SCHOOLS.includes(n));hi=-1;
+    const foot=landingFilter.school?`<div class="res-mfoot"><span>Showing ${esc(landingFilter.school)}</span><a data-hs-clear>Clear ✕</a></div>`:`<div class="res-mfoot"><span>Type to search all schools</span></div>`;
+    menu.innerHTML='<div class="res-mhead">Popular</div>'+items.map(n=>`<div class="res-opt" data-hs-opt data-name="${esc(n)}"><span>${esc(n)}</span></div>`).join('')+foot;
+    wireOpts();
+  }
+  function renderResults(q){
+    const ql=q.toLowerCase();
+    const all=SCHOOLS.filter(n=>n.toLowerCase().includes(ql)||schoolAbbr(n).toLowerCase().includes(ql));
+    const shown=all.slice(0,10);items=shown;hi=shown.length?0:-1;
+    if(!shown.length){menu.innerHTML='<div class="res-none">No school found.</div>';return;}
+    menu.innerHTML='<div class="res-mhead">Results for “'+esc(q)+'”</div>'+shown.map((n,i)=>`<div class="res-opt${i===0?' hl':''}" data-hs-opt data-name="${esc(n)}"><span>${hlName(n,q)}</span></div>`).join('')+(all.length>10?'<div class="res-mfoot"><span>keep typing to narrow</span></div>':'');
+    wireOpts();
+  }
+  input.onfocus=()=>{open();const q=input.value.trim();(q&&q!==landingFilter.school)?renderResults(q):renderDefault();};
+  input.oninput=()=>{open();const q=input.value.trim();q?renderResults(q):renderDefault();};
+  input.onkeydown=e=>{
+    if(e.key==='ArrowDown'){e.preventDefault();if(items.length){hi=Math.min(items.length-1,hi+1);paint();}}
+    else if(e.key==='ArrowUp'){e.preventDefault();if(items.length){hi=Math.max(0,hi-1);paint();}}
+    else if(e.key==='Enter'){if(hi>=0&&items[hi]){e.preventDefault();pick(items[hi]);}}
+    else if(e.key==='Escape'){close();input.blur();}
+  };
+  input.onblur=()=>{setTimeout(()=>{close();if(input.value.trim()!==(landingFilter.school||''))input.value=landingFilter.school||'';},160);};
+}
 /* ---------- RESOURCES ---------- */
 function wireSchoolSearch(el){
   const combo=el.querySelector('[data-res-combo]');if(!combo)return;
@@ -3395,7 +3441,8 @@ function wire(){
   el.querySelectorAll('[data-refilter]').forEach(s=>s.onchange=()=>{const f=s.closest('form');const d=new FormData(f);go('results',{q:d.get('q')||'',school:d.get('school')||'',major:d.get('major')||'',level:d.get('level')||''});});
   el.querySelectorAll('[data-school]').forEach(b=>{if(b.hasAttribute('data-go'))return;b.onclick=()=>go('results',{school:b.dataset.school});});
   const clr=$('[data-clear]');if(clr)clr.onclick=()=>go('home');
-  const lfilter=$('[data-landing-filter]');if(lfilter)lfilter.querySelectorAll('select').forEach(s=>s.onchange=()=>{landingFilter.type=$('[name=type]',lfilter).value;landingFilter.school=$('[name=school]',lfilter).value;landingFilter.major=$('[name=major]',lfilter).value;if(landingFilter.school&&!schoolsForLevel(landingFilter.type).includes(landingFilter.school))landingFilter.school='';if(landingFilter.major&&!majorsFor(landingFilter.type,landingFilter.school).includes(landingFilter.major))landingFilter.major='';browseLimit=BROWSE_STEP;render();});
+  const lfilter=$('[data-landing-filter]');if(lfilter)lfilter.querySelectorAll('select').forEach(s=>s.onchange=()=>{const t=$('[name=type]',lfilter),m=$('[name=major]',lfilter);if(t)landingFilter.type=t.value;if(m)landingFilter.major=m.value;if(landingFilter.major&&!majorsFor(landingFilter.type,landingFilter.school).includes(landingFilter.major))landingFilter.major='';browseLimit=BROWSE_STEP;render();});
+  wireHomeSchool(el);
   el.querySelectorAll('[data-sort]').forEach(b=>b.onclick=()=>{landingFilter.sort=b.dataset.sort;render();});
   el.querySelectorAll('[data-loadmore]').forEach(b=>b.onclick=()=>{if(!me()){showSignupGate(true);return;}const y=window.scrollY;browseLimit+=BROWSE_STEP;render();window.scrollTo(0,y);});
   el.querySelectorAll('[data-pop]').forEach(b=>b.onclick=()=>{landingFilter.school=(landingFilter.school===b.dataset.pop?'':b.dataset.pop);browseLimit=BROWSE_STEP;render();});
