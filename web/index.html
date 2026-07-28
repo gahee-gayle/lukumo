@@ -655,6 +655,31 @@
   .owner-rating{color:var(--ink);font-weight:800;font-size:14px;margin-top:9px}
   .owner-actions{display:flex;flex-direction:column;gap:10px;width:100%;margin-top:14px}
   .owner-card .mbtn{padding:12px;font-size:14px}
+  /* portfolio detail layout (responsive) */
+  .pf-grid{display:grid;grid-template-columns:1fr 270px;gap:44px;align-items:start}
+  .pf-aside{position:sticky;top:88px;display:flex;flex-direction:column;gap:16px}
+  .pf-mbar{display:none}
+  .pf-fab-like{display:none}
+  .btn-useapp{display:none}
+  @media(max-width:620px){
+    .pf-grid{grid-template-columns:1fr;gap:22px}
+    .pf-aside{position:static}
+    .pf-grid .owner-card{display:none}
+    .pf-title-lg{display:none}
+    .pf-mbar{display:flex;align-items:center;gap:12px;padding:12px 0 14px;border-bottom:1px solid var(--line);margin-bottom:16px;position:sticky;top:0;background:#fff;z-index:20}
+    .pf-mbar .avatar{width:46px;height:46px;border-radius:999px !important;flex:0 0 auto}
+    .pf-mbar-txt{flex:1;min-width:0}
+    .pf-mbar-t{font-size:15px;font-weight:800;letter-spacing:-.01em;line-height:1.2;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .pf-mbar-s{font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+    .pf-mbar-acts{display:flex;gap:7px;flex:0 0 auto}
+    .pf-mbar-acts button{height:34px;padding:0 12px;border-radius:999px !important;font-size:12.5px;font-weight:800;cursor:pointer;border:1.5px solid var(--blue);background:#fff;color:var(--blue-text)}
+    .pf-mbar-acts button.prim{background:var(--blue);border-color:var(--blue);color:#fff}
+    .pf-fab-like{display:flex;position:fixed;right:16px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:999px !important;background:var(--blue);color:#fff;border:none;align-items:center;justify-content:center;box-shadow:0 10px 26px -6px rgba(47,111,237,.55);cursor:pointer}
+    .pf-fab-like.on{background:#e0334c;box-shadow:0 10px 26px -6px rgba(224,51,76,.55)}
+    .pf-fab-like .cnt{position:absolute;top:-4px;right:-4px;background:#fff;color:var(--ink);font-size:11px;font-weight:800;min-width:20px;height:20px;border-radius:999px !important;display:grid;place-items:center;padding:0 5px;box-shadow:0 2px 6px rgba(0,0,0,.18)}
+    .btn-useapp{display:inline-flex;align-items:center;height:34px;padding:0 15px;border-radius:999px !important;background:var(--blue);color:#fff;font-weight:800;font-size:13px;border:none;cursor:pointer}
+    .nav-right .btn-outline.hide-mobile{display:none}
+  }
   .msess-tiles{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
   .msess-tile{flex:1;min-width:120px;background:#f7f8fa;border-radius:14px !important;padding:14px 16px}
   .msess-tile .n{font-size:20px;font-weight:800;color:var(--ink)}
@@ -1437,7 +1462,8 @@ function publicHeader(){return `<header class="nav" style="position:relative"><d
     <a class="brand" data-go="landing">${brandInner()}</a>
     <nav class="land-nav">${navLinksHTML()}</nav>
     <div class="nav-right">
-      <button class="btn btn-outline btn-sm" data-go="login">Log in</button>
+      <button class="btn-useapp" data-useapp>Use App</button>
+      <button class="btn btn-outline btn-sm hide-mobile" data-go="login">Log in</button>
       <button class="btn btn-primary btn-sm" data-go="signup">Sign up</button>
       ${navBurger()}
     </div>
@@ -1490,6 +1516,7 @@ function navBar(user){
     <a class="brand" data-go="home">${brandInner()}</a>
     <nav class="land-nav app-nav">${navLinksHTML()}</nav>
     <div class="nav-right">
+      <button class="btn-useapp" data-useapp>Use App</button>
       ${navBurger()}
       ${acc?`<button class="btn btn-primary btn-sm theme-blue" data-go="addPortfolio"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>Add Portfolio</button>`:''}
       <div class="menu">
@@ -2083,11 +2110,19 @@ function viewPortfolio(){
   const p=DB.portfolios.find(x=>x.id===route.params.id);if(!p)return notFound();
   const u=userById(p.ownerId);const cur=me();const isOwner=cur&&cur.id===u.id;
   const saved=cur&&(cur.saved||[]).includes(p.id);
+  const liked=!!(cur&&(p.likes||[]).includes(cur.id));
+  const likeCount=(4000+hashN(p.id+'l')%92000)+((p.likes||[]).length)-((cur&&(p.likes||[]).includes(cur.id))?0:0);
+  const fmtK=n=>n>=1000?(n/1000).toFixed(n>=10000?0:1)+'k':String(n);
   return `<div class="wrap">
     ${isOwner?`<a class="pf-back" data-go="profile">← Back to My Portfolio</a>`:`<div class="breadcrumb"><a data-go="home">Browse</a> <span>›</span> <a data-go="results" data-school="${esc(p.school)}">${esc(p.school)}</a> <span>›</span> <span>${esc(p.major)}</span></div>`}
-    <div class="grid" style="grid-template-columns:1fr 270px;gap:44px;align-items:start">
+    <div class="pf-mbar">
+      <img class="avatar" src="${avatarUrl(u,u.avatar?null:['#c2c7d0','#a7adb8'])}"/>
+      <div class="pf-mbar-txt"><div class="pf-mbar-t">${esc(p.title)}</div><div class="pf-mbar-s">${esc(tc(u.name))} · ${esc(p.school)}</div></div>
+      ${isOwner?`<div class="pf-mbar-acts"><button class="prim" data-owner="${u.id}">Edit</button></div>`:`<div class="pf-mbar-acts"><button data-follow="${u.id}">${(cur&&(cur.following||[]).includes(u.id))?'✓':'+ Follow'}</button><button class="prim" data-go="bookMentor" data-id="${u.id}">Book</button></div>`}
+    </div>
+    <div class="pf-grid">
       <div>
-        <h1 class="page-title">${esc(p.title)}</h1>
+        <h1 class="page-title pf-title-lg">${esc(p.title)}</h1>
         <div class="mt32">
           <h3 style="font-size:18px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px">The projects${isOwner?`<span class="proj-tools"><button type="button" class="proj-edit-ic" data-projportmenu="${p.id}" aria-label="Edit or delete portfolio"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg></button><div class="proj-menu" data-portmenu-for="${p.id}"><button type="button" data-add-project="${p.id}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg> Edit portfolio</button><button type="button" data-delportfolio="${p.id}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg> Delete portfolio</button></div></span>`:''}</h3>
           ${(()=>{const projs=projectsOf(p);if(!projs.length)return `<div class="empty">No projects added yet.</div>`;
@@ -2096,7 +2131,7 @@ function viewPortfolio(){
             return `<div class="grid grid-3">${show.map(pr=>projectTile(p,pr)).join('')}</div>${gate}`;})()}
         </div>
       </div>
-      <aside style="position:sticky;top:88px;display:flex;flex-direction:column;gap:16px">
+      <aside class="pf-aside">
         <div class="owner-card">
           <img class="avatar" width="84" height="84" src="${avatarUrl(u,u.avatar?null:['#c2c7d0','#a7adb8'])}"/>
           <b class="owner-name">${esc(tc(u.name))}</b>
@@ -2135,6 +2170,7 @@ function viewPortfolio(){
         </div>
       </aside>
     </div>
+    ${isOwner?'':`<button class="pf-fab-like${liked?' on':''}" data-like="${p.id}" aria-label="Like this portfolio"><svg width="26" height="26" viewBox="0 0 24 24" fill="${liked?'currentColor':'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 22V11"/><path d="M2 13v7a2 2 0 0 0 2 2h13.7a2 2 0 0 0 2-1.6l1.3-6.5A2 2 0 0 0 19 11h-5V5.5A2.5 2.5 0 0 0 11.5 3L7 11H4a2 2 0 0 0-2 2z"/></svg><span class="cnt">${fmtK(likeCount)}</span></button>`}
   </div>`;
 }
 function projectsOf(p){
@@ -3461,6 +3497,8 @@ function wire(){
   const eo=$('[data-especother]'),eoi=$('[data-especother-input]');if(eo&&eoi){eo.onchange=()=>{eoi.style.display=eo.checked?'block':'none';if(eo.checked)eoi.focus();else eoi.value='';};}
 
   el.querySelectorAll('[data-portfolio]').forEach(c=>c.onclick=e=>{if(e.target.closest('[data-save]')||e.target.closest('[data-add-project]')||e.target.closest('[data-owner]'))return;go('portfolio',{id:c.dataset.portfolio});});
+  el.querySelectorAll('[data-useapp]').forEach(b=>b.onclick=()=>toast('Lukumo app — coming soon','📱'));
+  el.querySelectorAll('[data-like]').forEach(b=>b.onclick=e=>{e.stopPropagation();const cur=me();if(!cur){toast('Sign up to like','♥');go('signup');return;}const p=DB.portfolios.find(x=>x.id===b.dataset.like);if(!p)return;p.likes=p.likes||[];const i=p.likes.indexOf(cur.id);if(i>=0)p.likes.splice(i,1);else p.likes.push(cur.id);save();render();});
   el.querySelectorAll('[data-projmodal]').forEach(c=>c.onclick=e=>{const parts=c.dataset.projmodal.split(':');openProjectModal(parts[0],parts[1]);});
   el.querySelectorAll('[data-workdel]').forEach(b=>b.onclick=e=>{e.stopPropagation();const parts=b.dataset.workdel.split(':');confirmDialog({title:'Delete this project?',body:'This removes the project and its images. This can’t be undone.',confirmText:'Delete',onConfirm:()=>{const p=DB.portfolios.find(x=>x.id===parts[0]);if(!p)return;const pr=p.projects.find(x=>x.id===parts[1]);const wasCover=pr&&p.cover&&pr.files&&pr.files.includes(p.cover);p.projects=p.projects.filter(x=>x.id!==parts[1]);if(wasCover){const rem=p.projects.flatMap(y=>y.files||[]);p.cover=rem[0]||null;}save();toast('Project removed');render();}});});
   el.querySelectorAll('[data-owner]').forEach(c=>c.onclick=e=>{e.stopPropagation();const cur=me();if(cur&&cur.id===c.dataset.owner)go('profile');else go('mentor',{id:c.dataset.owner});});
