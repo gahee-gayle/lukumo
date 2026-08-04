@@ -484,15 +484,15 @@
   .a2-heroimg{width:100%;height:auto;display:block;margin-bottom:-1px;transform:scale(1.1);transform-origin:bottom center}
   .a2-splitimg{width:100%;height:auto;display:block}
   .a2-icimg{width:100%;height:auto;display:block}
-  @media(min-width:761px){.a2-split-big{grid-template-columns:1fr 1.5fr;gap:70px}.a2-split-big .a2-split-art{margin-right:-128px}.a2-split-big .a2-splitimg{transform:scale(.95);transform-origin:right bottom}}
+  @media(min-width:761px){.a2-split-big{grid-template-columns:1.12fr 1.42fr;gap:60px}.a2-split-big .a2-split-txt p{max-width:520px}.a2-split-big .a2-split-art{margin-right:-128px}.a2-split-big .a2-splitimg{transform:scale(.92);transform-origin:right bottom}}
   .a2-sec-comm{padding-bottom:0}
   @media(min-width:761px){
-    .a2-split-comm{grid-template-columns:1fr 1.62fr;gap:32px;align-items:end}
+    .a2-split-comm{grid-template-columns:1.55fr 1.2fr;gap:34px;align-items:end}
     .a2-split-comm .a2-split-txt{align-self:center}
     .a2-comm-art{align-self:end;margin-right:-140px}
-    .a2-comm-img{width:100%;display:block;margin-bottom:-4px}
+    .a2-comm-img{width:100%;display:block;margin-bottom:0}
   }
-  @media(max-width:760px){.a2-comm-img{margin-bottom:-4px}}
+  @media(max-width:760px){.a2-comm-img{margin-bottom:0}}
   .a2-do{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:24px}
   .a2-do-item{text-align:center}
   .a2-do-art{max-width:158px;margin:0 auto}
@@ -3278,7 +3278,7 @@ function viewAbout(){
       <div class="a2-split a2-split-comm">
         <div class="a2-split-txt">
           <div class="a2-kick">Our community</div>
-          <h2>Built for students, inspired by <span class="hl hl-pink">community</span>.</h2>
+          <h2>Built for students,<br>inspired by <span class="hl hl-pink">community</span>.</h2>
           <p>We&rsquo;re a global community of students, alumni, and mentors who lift each other up and celebrate every creative journey.</p>
         </div>
         <div class="a2-split-art a2-comm-art"><img class="a2-splitimg a2-comm-img" src="${A2_COMMUNITY_IMG}" alt="A diverse community of creatives"/></div>
