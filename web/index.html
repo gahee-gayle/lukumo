@@ -463,9 +463,9 @@
   @media(max-width:640px){.abt2{padding:0 16px}}
   .abt2 .a2-kick{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#6b4df5;margin-bottom:9px}
   .abt2 h1{font-size:52px;line-height:1.06;letter-spacing:-.03em;font-weight:800;color:#17161c;margin:0}
-  .abt2 h2{font-size:52px;line-height:1.06;letter-spacing:-.03em;font-weight:800;color:#17161c;margin:0}
+  .abt2 h2{font-size:45px;line-height:1.1;letter-spacing:-.025em;font-weight:800;color:#17161c;margin:0}
   .abt2 p{font-size:17.5px;line-height:1.72;color:#494552}
-  @media(max-width:640px){.abt2 h1{font-size:34px}.abt2 h2{font-size:34px}}
+  @media(max-width:640px){.abt2 h1{font-size:34px}.abt2 h2{font-size:30px}}
   .abt2 .hl{background-repeat:no-repeat;background-position:0 84%;background-size:100% 38%;padding:0 3px;border-radius:2px !important}
   .abt2 .hl-purple{background-image:linear-gradient(transparent,#c7b9ff)}
   .abt2 .hl-yellow{background-image:linear-gradient(transparent,#f6d24a)}
@@ -485,6 +485,14 @@
   .a2-splitimg{width:100%;height:auto;display:block}
   .a2-icimg{width:100%;height:auto;display:block}
   @media(min-width:761px){.a2-split-big{grid-template-columns:1fr 1.5fr;gap:70px}.a2-split-big .a2-split-art{margin-right:-128px}.a2-split-big .a2-splitimg{transform:scale(.95);transform-origin:right bottom}}
+  .a2-sec-comm{padding-bottom:0;overflow:hidden}
+  @media(min-width:761px){
+    .a2-split-comm{grid-template-columns:0.78fr 1.85fr;gap:28px;align-items:end}
+    .a2-split-comm .a2-split-txt{align-self:center}
+    .a2-comm-art{align-self:end;margin-right:-40px}
+    .a2-comm-img{width:100%;display:block;margin-bottom:-4px}
+  }
+  @media(max-width:760px){.a2-comm-img{margin-bottom:-4px}}
   .a2-do{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-top:24px}
   .a2-do-item{text-align:center}
   .a2-do-art{max-width:158px;margin:0 auto}
@@ -499,7 +507,7 @@
   .a2-yrs{margin-top:12px;display:inline-block;font-size:12px;font-weight:800;color:#8a5a1a;background:#f7ecd2;padding:5px 12px;border-radius:999px !important}
   .a2-fbody p{margin:0 0 14px}.a2-fbody p:last-child{margin-bottom:0}.a2-fbody em{font-style:italic;color:#17161c;font-weight:600}
   .a2-cta{text-align:center;padding:44px 0 16px;border-top:1px solid #e6ddca}
-  .a2-cta h2{font-size:52px}
+  .a2-cta h2{font-size:45px}
   .a2-cta p{color:#494552;margin:12px 0 0}
   .a2-cta .btn{margin-top:24px}
   .a2-faq-h{margin-bottom:8px}
@@ -3266,14 +3274,14 @@ function viewAbout(){
       </div>
     </section>
 
-    <section class="a2-sec">
-      <div class="a2-split">
+    <section class="a2-sec a2-sec-comm">
+      <div class="a2-split a2-split-comm">
         <div class="a2-split-txt">
           <div class="a2-kick">Our community</div>
           <h2>Built for students, inspired by <span class="hl hl-pink">community</span>.</h2>
           <p>We&rsquo;re a global community of students, alumni, and mentors who lift each other up and celebrate every creative journey.</p>
         </div>
-        <div class="a2-split-art"><img class="a2-splitimg" src="${A2_COMMUNITY_IMG}" alt="A diverse community of creatives"/></div>
+        <div class="a2-split-art a2-comm-art"><img class="a2-splitimg a2-comm-img" src="${A2_COMMUNITY_IMG}" alt="A diverse community of creatives"/></div>
       </div>
     </section>
 
