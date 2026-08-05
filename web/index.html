@@ -656,6 +656,37 @@
   .art-body .pull{font-family:Georgia,serif;font-size:23px;line-height:1.4;color:#111;border-left:3px solid #111;padding:6px 0 6px 20px;margin:28px 0;font-style:italic}
   .art-body .art-note{font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;background:var(--panel);border:1px solid var(--line);border-radius:12px !important;padding:16px 20px;font-size:14.5px;line-height:1.6;color:var(--ink-2);margin:26px 0}
   .art-body .art-note strong{color:#111}
+  .art-body .data{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;border:1px solid var(--line);border-radius:14px !important;padding:22px 24px;margin:30px 0}
+  .art-body .data .cap{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .art-body .data h3{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:20px;margin:4px 0 4px;letter-spacing:-.01em;color:var(--ink)}
+  .art-body .data .sub{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-size:13.5px;font-weight:400;color:var(--muted);margin:0 0 18px;text-transform:none;letter-spacing:0}
+  .art-body .bars{display:flex;align-items:flex-end;gap:14px;height:190px;padding-top:8px;border-bottom:2px solid var(--ink);margin-bottom:8px}
+  .art-body .bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+  .art-body .bar .col{width:100%;background:linear-gradient(180deg,#7fd8bd,#00b488);border-radius:5px 5px 0 0 !important}
+  .art-body .bar.peak .col{background:linear-gradient(180deg,#00b488,#009b74)}
+  .art-body .bar .val{font-size:12px;font-weight:800;color:var(--ink-2);margin-bottom:6px}
+  .art-body .bar .yr{font-size:11px;color:var(--muted);margin-top:8px;text-align:center;line-height:1.2}
+  .art-body .bar.peak .yr{color:var(--accent-2);font-weight:800}
+  .art-body .axisnote{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5}
+  .art-body .split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:8px 0 0}
+  @media(max-width:560px){.art-body .split{grid-template-columns:1fr}}
+  .art-body .colbox{border-radius:12px !important;padding:14px 16px}
+  .art-body .colbox.up{background:#e4f6ee;border:1px solid #bfe6d3}
+  .art-body .colbox.down{background:#fbeae7;border:1px solid #f0ccc6}
+  .art-body .colbox .hd{font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+  .art-body .colbox.up .hd{color:#00915f}.art-body .colbox.down .hd{color:#c0392b}
+  .art-body .rowitem{padding:9px 0;border-top:1px solid rgba(0,0,0,.07)}
+  .art-body .rowitem:first-of-type{border-top:none}
+  .art-body .rowitem .s{font-size:14.5px;font-weight:800;color:var(--ink)}
+  .art-body .rowitem .f{font-size:13px;color:var(--ink-2);margin-top:1px}
+  .art-body .rowitem .n{font-weight:800}
+  .art-body .colbox.up .n{color:#00915f}.art-body .colbox.down .n{color:#c0392b}
+  .art-body .clos{display:flex;flex-direction:column;gap:0;margin-top:4px}
+  .art-body .clos .c{display:grid;grid-template-columns:64px 1fr;gap:14px;padding:11px 0;border-top:1px solid var(--line);align-items:baseline}
+  .art-body .clos .c:first-child{border-top:none}
+  .art-body .clos .yr{font-size:15px;font-weight:800;color:#c0392b}
+  .art-body .clos .nm{font-size:15px;color:var(--ink)}
+  .art-body .clos .nm span{color:var(--muted);font-size:13.5px}
   .art-sources{margin-top:40px;border-top:1px solid var(--line);padding-top:16px;font-size:12.5px;color:var(--muted);line-height:1.7}
   .art-sources a{color:var(--accent-2);text-decoration:none}
   .art-sources b{color:#111}
@@ -2620,11 +2651,96 @@ const ART_BODY_SYLLABUS=`
     <p>That is the paradox worth carrying into an application. A.I. is in the classroom now. What it still cannot do — observe, decide, revise, mean something — is precisely what admissions read a portfolio to find.</p>
     <div class="art-note"><strong>A note on sourcing.</strong> Program facts here were checked against the schools' own pages: Ringling's AI Undergraduate Certificate (a required <em>Fundamentals of AI</em> course plus two electives) and Rick Dakan's role; RISD's Computation, Technology and Culture department and Clement Valla; Golan Levin at Carnegie Mellon; Keith Roberson at Florida State; Indiana's "AI in the Studio"; SCAD's Applied AI (B.Des.) degree; and Spawning's Source.Plus. Direct quotes and the "a lifter"/ideation-only details come from interviews reported by ARTnews and Hyperallergic, cited below, and are not published on the schools' own sites.</div>`;
 const ART_SOURCES_SYLLABUS=`<b>Sources</b> · <a href="https://www.ringling.edu/academics/enhance-your-education/minors-certificates/ai-undergraduate-certificate/" target="_blank" rel="noopener">Ringling — AI Undergraduate Certificate</a> · <a href="https://catalog.ringling.edu/academic-affairs/artificial-intelligence-ai-certificate" target="_blank" rel="noopener">Ringling catalog — certificate structure</a> · <a href="https://www.ringling.edu/news/052324-ai_certificate-2/" target="_blank" rel="noopener">Ringling — certificate launch (Dakan)</a> · <a href="https://www.artnews.com/art-news/news/art-schools-teaching-ai-classes-1234715670/" target="_blank" rel="noopener">ARTnews — More Art School Classes Are Teaching AI This Fall</a> · <a href="https://hyperallergic.com/school-is-back-in-session-and-so-are-ai-art-classes/" target="_blank" rel="noopener">Hyperallergic — AI Art Classes</a> · <a href="https://www.risd.edu/about/directory/computation-technology-and-culture-department-ctc" target="_blank" rel="noopener">RISD — Computation, Technology and Culture</a> · <a href="https://www.cmu.edu/news/experts/golan.levin" target="_blank" rel="noopener">Carnegie Mellon — Golan Levin</a> · <a href="https://art.fsu.edu/people/keith-roberson/" target="_blank" rel="noopener">Florida State — Keith Roberson</a> · <a href="https://news.iu.edu/live/news/31788-the-art-in-artificial-intelligence-eskenazi-school-cou" target="_blank" rel="noopener">Indiana University — "AI in the Studio"</a> · <a href="https://www.scad.edu/academics/programs/applied-ai" target="_blank" rel="noopener">SCAD — Applied AI (B.Des.)</a> · <a href="https://spawning.substack.com/p/announcing-sourceplus-a-curation" target="_blank" rel="noopener">Spawning — Source.Plus</a> · <a href="https://news.artnet.com/art-world/open-letter-urges-publishers-not-to-use-ai-generated-illustrations-2294392" target="_blank" rel="noopener">Artnet — Molly Crabapple open letter</a>`;
+const ART_BODY_BIF=`
+<p class="first">This past fall, the art school at Cooper Union accepted roughly eight of every hundred students who applied. The same year, the University of the Arts in Philadelphia — a school more than a century old — closed so suddenly that its students had barely a week's warning. Both are true, in the same field, in the same season. American art education isn't simply rising or falling. It's pulling apart.</p>
+
+  <p>This summer brought a run of headlines about a Gen Z rush to art school, a generation said to be "betting on human creativity" against A.I. Some of that is real. But the fuller story in the enrollment data isn't a wave lifting everyone — it's a <b>split</b>: demand piling up at a handful of schools while others shrink, drop their degrees, or shut down. We checked it against the hard data — federal degree records, IPEDS filings, and the schools' own fact books. Here's the shape they make.</p>
+
+  <p class="sub">First, the national picture: flat</p>
+
+  <p>Start with the national total. If art education were simply growing, the country would be awarding more art degrees each year. It isn't. Bachelor's degrees in the visual and performing arts <b>peaked back in 2012–13</b> and have hovered below that line ever since — no surge, no collapse, just a plateau. That flat average is the first clue: whatever is happening isn't happening to the whole field at once.</p>
+
+  <div class="data">
+    <div class="cap">National · hard data</div>
+    <h3>U.S. bachelor's degrees in visual &amp; performing arts</h3>
+    <p class="sub">Degrees conferred per year · Source: NCES Digest of Education Statistics</p>
+    <div class="bars">
+      <div class="bar"><span class="val">93.9k</span><span class="col" style="height:78%"></span><span class="yr">2010–11</span></div>
+      <div class="bar peak"><span class="val">97.8k</span><span class="col" style="height:100%"></span><span class="yr">2012–13<br>peak</span></div>
+      <div class="bar"><span class="val">93.0k</span><span class="col" style="height:76%"></span><span class="yr">2015–16</span></div>
+      <div class="bar"><span class="val">88.5k</span><span class="col" style="height:62%"></span><span class="yr">2017–18</span></div>
+      <div class="bar"><span class="val">92.3k</span><span class="col" style="height:74%"></span><span class="yr">2019–20</span></div>
+      <div class="bar"><span class="val">90.2k</span><span class="col" style="height:70%"></span><span class="yr">2021–22</span></div>
+    </div>
+    <p class="axisnote">Still roughly 7,500 degrees <b>below</b> the 2012–13 peak. Federal conferral data lags ~3 years, so it doesn't yet capture fall-2025 applications — but through the most recent complete year, there is no national surge.</p>
+  </div>
+
+  <p class="sub">Then, the schools: opposite directions</p>
+
+  <p>Zoom in from the national line to individual schools and the flat average breaks apart. Some campuses genuinely are filling — enrollment and applications climbing. Others, in the very same cities and years, are shrinking, cutting staff, and turning away from degrees. The headline "surge" was built almost entirely from the first column, and rarely mentioned the second.</p>
+
+  <div class="data">
+    <div class="cap">School by school · applications &amp; enrollment</div>
+    <h3>The same season, two directions</h3>
+    <p class="sub">Each figure labeled by what it measures. Sources: IPEDS-derived filings &amp; schools' own fact books.</p>
+    <div class="split">
+      <div class="colbox up">
+        <div class="hd">▲ Gaining ground</div>
+        <div class="rowitem"><div class="s">SCAD</div><div class="f">Enrollment <span class="n">+56%</span> over the decade (11,861 → 18,550) — the clearest real growth story.</div></div>
+        <div class="rowitem"><div class="s">Parsons / The New School</div><div class="f">Arts applications <span class="n">+64%</span> since 2016 (school-reported); institution-wide apps <span class="n">+7%</span> in a year.</div></div>
+        <div class="rowitem"><div class="s">Cooper Union</div><div class="f">Applications up <span class="n">~20%</span> over two years — tiny, and still fiercely selective (Art acceptance ~8%).</div></div>
+        <div class="rowitem"><div class="s">RISD</div><div class="f">Enrollment <span class="n">flat</span> — capacity-capped and highly selective, so headcount barely moves.</div></div>
+      </div>
+      <div class="colbox down">
+        <div class="hd">▼ Losing ground</div>
+        <div class="rowitem"><div class="s">School of Visual Arts (SVA)</div><div class="f">Applications <span class="n">−9%</span>, first-year enrollment <span class="n">−19%</span> year over year.</div></div>
+        <div class="rowitem"><div class="s">FIT</div><div class="f">Art &amp; design applications <span class="n">−13%</span> in a year (school's own fact book).</div></div>
+        <div class="rowitem"><div class="s">MICA</div><div class="f">Enrollment <span class="n">−24%</span> from its 2019 peak — followed by layoffs and buyouts.</div></div>
+        <div class="rowitem"><div class="s">Pratt</div><div class="f">Total applications roughly <span class="n">flat</span>, and below the 2022 peak (fine-arts studios up per the school).</div></div>
+      </div>
+    </div>
+  </div>
+
+  <p>Note the fine print the headlines skipped: the schools cited for a "surge" were often talking specifically about their <b>painting and drawing programs</b> — real, but a niche — while their <b>whole-school</b> numbers were flat or falling. SVA and FIT, both named in the coverage, posted declines in their own official data.</p>
+
+  <div class="pull">Rising applications at a few selective schools and the collapse of standalone art colleges aren't a contradiction. <span>They're the same story.</span></div>
+
+  <p class="sub">And at the fragile end: the closures</p>
+
+  <p>The clearest evidence that this isn't a boom is that, while a handful of schools filled up, a remarkable number of storied art colleges shut their doors or walked away from degrees — a run of failures with few precedents in American higher education.</p>
+
+  <div class="data">
+    <div class="cap">Recent closures &amp; degree cuts</div>
+    <h3>The other half of the field</h3>
+    <div class="clos">
+      <div class="c"><div class="yr">2022</div><div class="nm"><b>San Francisco Art Institute</b> — closed after ~150 years <span>· one of the oldest art schools in the West</span></div></div>
+      <div class="c"><div class="yr">2023</div><div class="nm"><b>The Art Institutes</b> — remaining for-profit chain closed abruptly</div></div>
+      <div class="c"><div class="yr">2024</div><div class="nm"><b>PAFA</b> — ended its degree programs <span>· the nation's oldest art school &amp; museum</span></div></div>
+      <div class="c"><div class="yr">2024</div><div class="nm"><b>University of the Arts</b> (Philadelphia) — closed abruptly, lost accreditation</div></div>
+      <div class="c"><div class="yr">2027</div><div class="nm"><b>California College of the Arts</b> — announced it will close/consolidate <span>· ~$20M deficit</span></div></div>
+    </div>
+  </div>
+
+  <p>The pattern is not random. The schools filling up tend to be <b>large and tuition-diversified</b> (SCAD's sheer scale) or <b>brand-name and selective</b>, where the applicant pool already exceeds a fixed number of seats. The schools failing tend to be <b>small, single-focus, expensive private art colleges</b> without an endowment cushion or the enrollment scale to absorb a bad year. Demand is concentrating at the top and at scale, while the fragile middle gives way. A flat national line can hide all of that.</p>
+
+  <p class="sub">What about "betting on human creativity"?</p>
+
+  <p>It's the most quoted line in the surge coverage — Gen Z choosing art precisely <em>because</em> A.I. can't replace a human hand. It's a genuinely appealing idea, and some students clearly feel it. But we couldn't find a single survey that measures it. The evidence is anecdotal: reporters' framing and a few student quotes. Where broad Gen Z surveys do exist on A.I. and careers, they more often point the other way — toward trades and "A.I.-proof" paths, not art. So treat "betting on human creativity" as a plausible story, not an established fact.</p>
+
+  <p class="sub">What it means if you're applying</p>
+
+  <p>Here's why the split matters to you. If the field were moving in one direction — all up, or all down — the advice would be simple. Because it's <b>pulling apart</b>, the stakes of <i>where</i> and <i>what</i> you apply to are higher than they've been in years. Some programs are more competitive than any "record applications" story admits; others sit at institutions under real financial strain. The move isn't to follow a headline — it's to know each specific school's health, its selectivity, and what its portfolio actually rewards.</p>
+
+  <p>That's the whole reason Lukumo exists: real accepted portfolios, organized by school and major, and the people who made them — so your choice is built on what actually gets in, at schools that will still be standing when you graduate.</p>
+
+  <div class="art-note"><b>A note on the numbers.</b> National degree counts are from the NCES Digest of Education Statistics. School-level application and enrollment figures are from IPEDS-derived filings and the schools' own admissions fact books (FIT, Cooper Union). Figures are labeled by metric because applications and enrollment often move differently. The Parsons "+64% since 2016" figure is as reported by the school to the press and not independently corroborated in an official document; all other figures trace to official data. Verified 2026.</div>`;
+const ART_SOURCES_BIF=`<b>Sources</b> · <a href="https://nces.ed.gov/programs/digest/d23/tables/dt23_322.10.asp" target="_blank" rel="noopener">NCES Digest — degrees in visual &amp; performing arts</a> · <a href="https://www.theartnewspaper.com/2025/07/10/new-york-city-art-schools-see-surge-in-gen-z-applications" target="_blank" rel="noopener">The Art Newspaper — NYC art schools see surge</a> · <a href="https://gothamist.com/arts-entertainment/nyc-art-schools-see-record-high-application-numbers-as-gen-zers-clamber-to-enroll" target="_blank" rel="noopener">Gothamist — record-high application numbers</a> · <a href="https://www.collegetuitioncompare.com/trends/savannah-college-of-art-and-design/student-population/" target="_blank" rel="noopener">SCAD enrollment (IPEDS)</a> · <a href="https://datausa.io/profile/university/the-new-school/" target="_blank" rel="noopener">The New School applications (IPEDS)</a> · <a href="https://www.collegetuitioncompare.com/trends/school-of-visual-arts/admission/" target="_blank" rel="noopener">SVA admissions (IPEDS)</a> · <a href="https://www.fitnyc.edu/documents/ire/fall-2025-admissions.pdf" target="_blank" rel="noopener">FIT Fall 2025 admissions fact book</a> · <a href="https://www.collegetuitioncompare.com/trends/maryland-institute-college-of-art/student-population/" target="_blank" rel="noopener">MICA enrollment (IPEDS)</a> · <a href="https://cooper.edu/admissions/facts" target="_blank" rel="noopener">Cooper Union admissions facts</a> · <a href="https://www.artnews.com/art-news/news/san-francisco-california-college-of-the-arts-close-2027-1234769731/" target="_blank" rel="noopener">ARTnews — CCA to close by 2027</a> · <a href="https://www.highereddive.com/news/art-institutes-close-remaining-colleges/694685/" target="_blank" rel="noopener">Higher Ed Dive — Art Institutes close</a> · <a href="https://www.artnews.com/art-news/news/philadelphia-university-of-the-arts-abruptly-closes-loses-accreditation-1234708710/" target="_blank" rel="noopener">ARTnews — University of the Arts closes</a>`;
 const BLOG_POSTS=[
   {id:'as-art-schools-close',cat:'Analysis',kicker:'Higher Education',date:'2026-01-14',feat:true,title:'As the Art Schools Close',deck:"A run of shutdowns at storied American art colleges has laid bare a slow financial squeeze — and is quietly redrawing where the next generation learns to make art.",excerpt:'A run of shutdowns at storied American art colleges has laid bare a slow financial squeeze — and is quietly redrawing where the next generation learns to make art.',body:ART_BODY_CLOSE,sources:ART_SOURCES_CLOSE},
   {id:'ai-portfolio-split',cat:'Analysis',kicker:'Higher Education · Technology',date:'2026-07-08',feat:true,title:'As A.I. Reaches the Portfolio, Art Schools Split',deck:"One school bans A.I.-generated work outright. Another calls it the next brush. A third says nothing at all. For applicants, the rules now depend entirely on where they apply.",excerpt:'One school bans A.I.-generated work outright. Another calls it the next brush. A third says nothing at all — the rules now depend entirely on where you apply.',body:ART_BODY_AI,sources:ART_SOURCES_AI},
   {id:'machine-joins-syllabus',cat:'Analysis',kicker:'Analysis \u00b7 The Classroom',date:'2026-09-02',feat:true,title:'The Machine Joins the Syllabus',deck:"Once, the debate was whether art schools would let students touch generative A.I. This fall, a growing number are teaching it \u2014 as a required course, a certificate, even a degree \u2014 while insisting the human hand is still the point.",excerpt:'Once the fight was whether to ban generative A.I. Now art schools are teaching it \u2014 as a course, a certificate, even a degree \u2014 while insisting the human hand is still the point.',body:ART_BODY_SYLLABUS,sources:ART_SOURCES_SYLLABUS},
-  {id:'ava-risd-breakdown',cat:'Portfolio Breakdown',date:'2026-06-30',feat:true,title:'How Ava got into RISD, piece by piece',deck:'A RISD Graphic Design admit walks through the twelve pieces she submitted — what each one was doing, and why it stayed in.',excerpt:'A RISD Graphic Design admit walks through the twelve pieces she submitted — what each one was doing, and why it stayed in.'},
+  {id:'art-schools-bifurcation',cat:'Analysis',kicker:'Analysis \u00b7 The Data',date:'2026-09-20',feat:true,title:'Some Art Schools Are Full. Others Are Closing.',deck:"In the same season, one art college turns away applicants while another shuts its doors. The enrollment data behind a field splitting in two \u2014 and why it changes where you should apply.",excerpt:'One art college turns away applicants while another shuts its doors. The enrollment data behind a field splitting in two \u2014 and why it changes where you should apply.',body:ART_BODY_BIF,sources:ART_SOURCES_BIF},
+  {id:'ava-risd-breakdown',cat:'Portfolio Breakdown',date:'2026-06-30',title:'How Ava got into RISD, piece by piece',deck:'A RISD Graphic Design admit walks through the twelve pieces she submitted — what each one was doing, and why it stayed in.',excerpt:'A RISD Graphic Design admit walks through the twelve pieces she submitted — what each one was doing, and why it stayed in.'},
   {id:'business-to-artcenter',cat:'Student Story',date:'2026-06-18',title:'From business major to ArtCenter grad ID',deck:'A career-changer on building a graduate industrial-design portfolio from zero, nights and weekends, in eighteen months.',excerpt:'A career-changer on building a graduate industrial-design portfolio from zero, nights and weekends, in eighteen months.'},
   {id:'ug-vs-grad',cat:'Guide',date:'2026-06-02',title:'Undergrad vs grad portfolios: what actually changes',deck:'Range and potential get you into a BFA. A grad portfolio asks for something else — a point of view. Here is the difference, concretely.',excerpt:'Range and potential get you into a BFA. A grad portfolio asks for something else — a point of view. Here is the difference, concretely.'},
   {id:'sketchbook-that-gets-read',cat:'Portfolio Breakdown',date:'2026-05-28',title:'The sketchbook that gets read',deck:'',excerpt:'Process work is where reviewers look hardest. What to leave in, what to cut, and how to sequence a sketchbook so it tells a story.'},
