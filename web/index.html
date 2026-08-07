@@ -3103,7 +3103,7 @@ function fmtDate(s){const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Se
 const BLOG_CATS=['All','Analysis','Student Story','Portfolio Breakdown','Interview','Guide','Opinion'];
 let BLOG_STATE={cat:'All',q:'',page:1};
 const BLOG_PER=6;
-function blogFiltered(){return BLOG_POSTS.filter(function(p){if(p.feat)return false;var okc=(BLOG_STATE.cat==='All'||p.cat===BLOG_STATE.cat);var q=BLOG_STATE.q.toLowerCase();var okq=(!q||(p.title+' '+p.excerpt+' '+p.cat).toLowerCase().indexOf(q)>=0);return okc&&okq;});}
+function blogFiltered(){return BLOG_POSTS.filter(function(p){if(p.feat)return false;if(!(p.body&&p.body.trim()))return false;var okc=(BLOG_STATE.cat==='All'||p.cat===BLOG_STATE.cat);var q=BLOG_STATE.q.toLowerCase();var okq=(!q||(p.title+' '+p.excerpt+' '+p.cat).toLowerCase().indexOf(q)>=0);return okc&&okq;});}
 function viewBlog(){
   BLOG_STATE={cat:'All',q:'',page:1};
   const feat=BLOG_POSTS.filter(p=>p.feat).slice(0,4);
